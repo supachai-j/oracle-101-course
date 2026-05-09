@@ -1,0 +1,15 @@
+{"id": "concept:oracle", "type": "concept", "title": "Oracle (External Brain for AI Agents)"}
+{"id": "concept:psi-folder", "type": "concept", "title": "ψ (psi) folder — Oracle's Tangible Memory"}
+{"id": "concept:retrospective", "type": "concept", "title": "Retrospective Loop (/rrr — episodic to semantic memory)"}
+{"id": "principle:nothing-is-deleted", "type": "principle", "title": "Principle 1 — Nothing is Deleted"}
+{"id": "principle:patterns-over-intentions", "type": "principle", "title": "Principle 2 — Patterns Over Intentions"}
+{"id": "principle:external-brain-not-command", "type": "principle", "title": "Principle 3 — External Brain, Not Command"}
+{"id": "principle:curiosity-creates-existence", "type": "principle", "title": "Principle 4 — Curiosity Creates Existence"}
+{"id": "principle:form-and-formless", "type": "principle", "title": "Principle 5 — Form and Formless (รูป และ สุญญตา)"}
+{"id": "principle:transparency-rule-6", "type": "principle", "title": "Rule 6 — Transparency (Oracle Never Pretends to Be Human)"}
+{"id": "tool:arra-oracle-v3", "type": "tool", "title": "arra-oracle-v3 — Oracle's Memory and Brain Repo"}
+{"id": "tool:maw-js", "type": "tool", "title": "maw-js — Multi-Agent Orchestrator (Nervous System)"}
+{"id": "tool:arra-oracle-skills-cli", "type": "tool", "title": "arra-oracle-skills-cli — Skills Installer for Multi-Agent Workflows"}
+{"id": "feature:awaken", "type": "feature", "title": "/awaken — Oracle Birth Ritual"}
+{"id": "pattern:multi-agent-orchestration", "type": "pattern", "title": "Multi-Agent Orchestration (Family, talk-to, team-agents)"}
+{"id": "pattern:autonomous-ops", "type": "pattern", "title": "Autonomous Ops (Cron, PM2, systemd, Triggers)"}
