@@ -4,18 +4,28 @@
 
 ## 1. Domain
 
-Oracle is an external-brain system for AI agents — 5 Principles + Rule 6, maw runtime, skills/plugin ecosystem, multi-agent orchestration, autonomous ops.
+Oracle is an external-brain system for AI agents. The course teaches learners to **build their own Oracle** — install the stack, awaken an identity, customize with skills/plugins, and run on real work.
+
+Core domain pillars:
+- **Philosophy** — 5 Principles + Rule 6 (immutable constitution governing all Oracles)
+- **Brain** — `arra-oracle-v3` external memory: ψ/ folder, retrospectives, learnings, resonance
+- **Runtime** — `maw-js` nervous system: slash commands, hooks, skills loading
+- **Skills/plugins** — `arra-oracle-skills-cli` ecosystem: shareable units of behavior
+- **Multi-agent ops** — orchestration, family, talk-to, fleet, federation
+- **Lifecycle** — awaken (birth), bud (reproduction), retrospective, autonomous ops
 
 ## 2. Entity catalogue
 
-Edit this table to fit your domain. Keep the type set small and stable.
+Keep the type set small and stable.
 
 | type | id pattern | gets its own page? | notes |
 |---|---|---|---|
 | `concept` | `concept:<kebab>` | yes | core ideas, definitions, mental models |
-| `feature` | `feature:<kebab>` | yes | concrete features / capabilities |
-| `pattern` | `pattern:<kebab>` | yes | reusable patterns, workflows |
-| `tool` | `tool:<name>` | yes | tooling specific to your domain |
+| `principle` | `principle:<kebab>` | yes | 5 Principles + Rule 6 (governs all Oracles) |
+| `feature` | `feature:<kebab>` | yes | concrete features / capabilities (e.g. /awaken, /bud) |
+| `pattern` | `pattern:<kebab>` | yes | reusable patterns, workflows (e.g. retrospective loop) |
+| `tool` | `tool:<name>` | yes | components: `arra-oracle-v3`, `maw-js`, `skills-cli` |
+| `person` | `person:<kebab>` | yes | humans + named Oracles (Nat, Neo, Wind, etc.) |
 | `decision` | `decision:<date>-<slug>` | yes | ADRs / authoritative decisions |
 | `source` | `source:<kebab>` | no | reference only — links from raw/ |
 
@@ -26,6 +36,8 @@ Edit this table to fit your domain. Keep the type set small and stable.
 - `composes` — A is built from / orchestrates B
 - `alternative-to` — A and B solve overlapping problems
 - `extends` — A is a specialisation of B
+- `governs` — A constrains the behavior of B (e.g. principle governs feature)
+- `awakens-from` — Oracle A buds from Oracle B (parent → child lineage)
 - `supersedes` — new claim/decision replaces older one (old stays, marked stale)
 - `contradicts` — flagged for Lint to resolve
 - `cites` — A draws evidence from source B
