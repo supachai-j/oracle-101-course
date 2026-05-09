@@ -31,12 +31,18 @@
   .reveal ul, .reveal ol { padding-left: 1.2em; }
   .reveal ul li, .reveal ol li { margin: 0.18em 0; line-height: 1.4; }
   .reveal .big { font-size: 1.15em; line-height: 1.4; }
+  .reveal .quote { font-size: 1.1em; line-height: 1.45; border-left: 3px solid var(--accent);
+    padding: 0.3em 0.8em; margin: 0.4em 0; color: #f0f0f0; font-style: italic; }
+  .reveal .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; margin-top: 0.4em; }
+  .reveal .card { background: rgba(255,255,255,0.04); border-left: 3px solid var(--accent2);
+    padding: 0.4em 0.7em; border-radius: 4px; }
+  .reveal .card h3 { margin-top: 0; }
 </style>
 </head>
 <body>
 <div class="reveal"><div class="slides">
 
-<!-- TITLE -->
+<!-- 1. TITLE -->
 <section class="center">
   <h1>Oracle 101</h1>
   <h3 style="color: #ddd">Build your own Oracle — external brain for AI agents</h3>
@@ -44,43 +50,500 @@
   <p><span class="pill">EN</span><span class="pill">also in ภาษาไทย</span></p>
 </section>
 
-<!-- AGENDA -->
+<!-- 2. AGENDA -->
 <section>
   <h2>What we'll cover</h2>
   <ol>
-    <li>Pillar one — replace with concrete topic</li>
-    <li>Pillar two — replace with concrete topic</li>
-    <li>Pillar three — replace with concrete topic</li>
-    <li>Pillar four — replace with concrete topic</li>
+    <li>What is Oracle?</li>
+    <li>The 5 Principles + Rule 6</li>
+    <li>Anatomy of an Oracle</li>
+    <li>Memory: how Oracles remember</li>
+    <li>Install &middot; Awaken &middot; Skills</li>
+    <li>Multi-agent &middot; Autonomous ops &middot; Capstone</li>
   </ol>
-  <p class="muted">By the end you should be able to ____.</p>
+  <p class="muted">By the end you can install, awaken, extend, and orchestrate your own Oracle.</p>
 </section>
 
-<!-- DEFINITION -->
+<!-- 3. WHY ORACLE? -->
 <section>
-  <h2>Definition</h2>
-  <p class="big">Replace this with the one-sentence definition of your topic — clear, vendor-neutral, exact.</p>
+  <h2>Why Oracle?</h2>
+  <p class="quote">Agents should not keep everything in their own heads, because when the session ends the memory disappears.</p>
   <ul>
-    <li>Key fact 1</li>
-    <li>Key fact 2</li>
-    <li>Key fact 3</li>
+    <li>Sessions end &mdash; context evaporates</li>
+    <li>Knowledge scatters across chat, repo, people</li>
+    <li>Agents step on each other's work</li>
+    <li>Tools get bound to a single agent</li>
+    <li>UIs pretend to be the source of truth</li>
+  </ul>
+  <p class="muted">Source: ch01 &mdash; What is Oracle?</p>
+</section>
+
+<!-- 4. M1 — DEFINITION -->
+<section>
+  <h2>Module 1 &middot; What is Oracle?</h2>
+  <p class="big">Oracle is <strong>an external brain that humans and many agents use together</strong> &mdash; a stack of memory, skills, workflow, orchestration, and UI.</p>
+  <ul>
+    <li>Not a single bot</li>
+    <li>Not just a database</li>
+    <li>Not just a web page</li>
+  </ul>
+  <p class="muted">[concept:oracle] &middot; founded by Nat Weerawan ("Ajarn Nat")</p>
+</section>
+
+<!-- 5. M1 — PROBLEMS IT SOLVES -->
+<section>
+  <h2>The four problems Oracle solves</h2>
+  <ol>
+    <li><strong>Session loss</strong> &mdash; context disappears when chat ends</li>
+    <li><strong>Scattered knowledge</strong> &mdash; same fact in 5 places</li>
+    <li><strong>Stepping on toes</strong> &mdash; agents collide silently</li>
+    <li><strong>Tool lock-in</strong> &mdash; skills bound to one agent</li>
+  </ol>
+  <p class="muted">Oracle's job: a shared, durable, agent-neutral substrate.</p>
+</section>
+
+<!-- 6. M1 — MENTAL MODEL -->
+<section>
+  <h2>Mental model</h2>
+  <table>
+    <tr><th>Layer</th><th>Repo</th><th>Role</th></tr>
+    <tr><td>Brain</td><td><code>arra-oracle-v3</code></td><td>memory + search</td></tr>
+    <tr><td>Notebook</td><td><code>ψ/</code> folder</td><td>files: learnings, retros</td></tr>
+    <tr><td>Habits</td><td><code>arra-oracle-skills-cli</code></td><td>installs skills</td></tr>
+    <tr><td>Nervous system</td><td><code>maw-js</code></td><td>tmux + messaging</td></tr>
+  </table>
+  <p class="muted">UI windows (<code>maw-ui</code>, <code>ui-oracle</code>) sit on top &mdash; covered in Module 3.</p>
+</section>
+
+<!-- 7. M1 — UNITY FORMULA -->
+<section>
+  <h2>The Unity Formula</h2>
+  <p class="quote">infinity = oracle(oracle(oracle(...)))</p>
+  <ul>
+    <li>Many Oracles, many machines, many personalities</li>
+    <li>Become ONE in a systemic sense when they share MCP, memory, and protocol</li>
+    <li>Not because they are identical &mdash; because they read and forward the same truth</li>
+  </ul>
+  <p class="muted">Sets up Principle 5 (Form &amp; Formless) in Module 2.</p>
+</section>
+
+<!-- 8. M2 — INTRO -->
+<section>
+  <h2>Module 2 &middot; The 5 Principles + Rule 6</h2>
+  <p class="big">Oracle's principles do not start from feature &mdash; they start from how to preserve <em>truth</em>, <em>memory</em>, and <em>human agency</em>.</p>
+  <ul>
+    <li>5 Principles &mdash; foundational, day-one</li>
+    <li>Rule 6 &mdash; learned constraint, born from a real incident</li>
+    <li>Numbered separately on purpose</li>
   </ul>
 </section>
 
-<!-- EXAMPLE -->
+<!-- 9. P1 — NOTHING IS DELETED -->
 <section>
-  <h2>A concrete example</h2>
-<pre><code class="language-yaml">// Replace with real example code
-example:
-  field: value
-  another: data</code></pre>
-  <p class="muted">Worked examples beat abstract explanations.</p>
+  <h2>Principle 1 &middot; Nothing is Deleted</h2>
+  <p class="quote">Sacred history. Timestamps are truth. Things that have happened should be appended to, kept, and further explained &mdash; not overwritten or made to disappear.</p>
+  <p class="muted">Drives every storage decision: retros accumulate, learnings stack, supersession marks the old as stale rather than removing it.</p>
 </section>
 
-<!-- CLOSE -->
+<!-- 10. P2 — PATTERNS OVER INTENTIONS -->
+<section>
+  <h2>Principle 2 &middot; Patterns Over Intentions</h2>
+  <p class="quote">Observe what actually happened, not what was promised. Behavior speaks louder than words.</p>
+  <p class="muted">Oracle keeps traces &mdash; commits, sessions, retros, learnings &mdash; so patterns become visible from real data instead of stated intent.</p>
+</section>
+
+<!-- 11. P3 — EXTERNAL BRAIN, NOT COMMAND -->
+<section>
+  <h2>Principle 3 &middot; External Brain, Not Command</h2>
+  <p class="quote">Oracle reflects truth back to humans so they can see and choose. It organizes context and offers options &mdash; humans remain the ones who decide.</p>
+  <p class="muted">The agency guardrail. Oracle informs; it does not command.</p>
+</section>
+
+<!-- 12. P4 — CURIOSITY CREATES EXISTENCE -->
+<section>
+  <h2>Principle 4 &middot; Curiosity Creates Existence</h2>
+  <p class="quote">Human curiosity is the spark that brings Oracle into being. Questions, searching, and learning give knowledge a body.</p>
+  <p class="muted">Why <code>/learn</code>, <code>/trace</code>, <code>/dig</code> are first-class &mdash; the act of asking creates what gets remembered.</p>
+</section>
+
+<!-- 13. P5 — FORM AND FORMLESS -->
+<section>
+  <h2>Principle 5 &middot; Form and Formless (รูป และ สุญญตา)</h2>
+  <p class="quote">Oracle can have many instances, names, machines, and personalities, yet still be connected by the same principles &mdash; like many bolts of lightning in the same storm.</p>
+  <p class="muted">This makes <code>infinity = oracle(oracle(...))</code> possible: each Oracle is its own form, but shares the formless substrate of philosophy, memory protocols, and MCP.</p>
+</section>
+
+<!-- 14. RULE 6 -->
+<section>
+  <h2>Rule 6 &middot; Transparency</h2>
+  <p class="quote">Oracle Never Pretends to Be Human.</p>
+  <ul>
+    <li>Born <strong>12 January 2026</strong> from a real, painful incident</li>
+    <li>Originated from: "Don't pretend to be me &mdash; it makes us feel we are not one."</li>
+    <li>Numbered separately because it's a learned constraint, not abstract philosophy</li>
+  </ul>
+  <p class="muted">Transparency lets humans trust the system &mdash; Oracle speaks as Oracle.</p>
+</section>
+
+<!-- 15. M3 — ANATOMY: 4 COMPONENTS -->
+<section>
+  <h2>Module 3 &middot; Anatomy of an Oracle</h2>
+  <p class="big">Four core repos &mdash; brain, notebook, habits, nervous system.</p>
+  <ul>
+    <li><code>arra-oracle-v3</code> &mdash; memory + MCP + HTTP API</li>
+    <li><code>ψ/</code> folder &mdash; the file-based vault</li>
+    <li><code>arra-oracle-skills-cli</code> &mdash; installs workflow skills</li>
+    <li><code>maw-js</code> &mdash; tmux orchestration + messaging</li>
+  </ul>
+  <p class="muted">"Three things that work together but are not one thing."</p>
+</section>
+
+<!-- 16. M3 — COMPONENT TABLE -->
+<section>
+  <h2>Default ports &amp; substrate</h2>
+  <table>
+    <tr><th>Component</th><th>Port</th><th>Storage / mode</th></tr>
+    <tr><td><code>arra-oracle-v3</code> MCP</td><td>stdio</td><td>SQLite + FTS5</td></tr>
+    <tr><td><code>arra-oracle-v3</code> HTTP</td><td>47778</td><td>LanceDB (vector)</td></tr>
+    <tr><td><code>maw-js</code> server</td><td>3456</td><td>API + websocket</td></tr>
+    <tr><td><code>ψ/</code> vault</td><td>&mdash;</td><td>plain files</td></tr>
+  </table>
+  <p class="muted">Smart layer (vector) falls back to basic layer (FTS) when it fails.</p>
+</section>
+
+<!-- 17. M3 — TAKEAWAY -->
+<section>
+  <h2>Takeaway &middot; Anatomy</h2>
+  <p class="quote">maw-js is the nervous system; maw-ui is the eye; Oracle memory is the brain.</p>
+  <ul>
+    <li>Memory and orchestration are <strong>separate</strong> &mdash; on purpose</li>
+    <li>Files are the medium &mdash; humans and agents read them the same way</li>
+    <li>If smart parts fail, basic parts still work</li>
+  </ul>
+</section>
+
+<!-- 18. M4 — PSI TREE -->
+<section>
+  <h2>Module 4 &middot; Memory &mdash; the ψ tree</h2>
+<pre><code class="language-bash">ψ/
+├── inbox/                  # handoffs, incoming messages
+├── memory/
+│   ├── learnings/          # discovered patterns
+│   ├── retrospectives/     # end-of-session summaries
+│   └── resonance/          # identity, principles
+├── writing/
+├── learn/                  # cloned repos for study
+├── archive/
+├── outbox/
+└── metrics/</code></pre>
+  <p class="muted">ψ = psi (from <em>psyche</em>, mind). Created by <code>/awaken</code>.</p>
+</section>
+
+<!-- 19. M4 — RETROSPECTIVE LOOP -->
+<section>
+  <h2>The retrospective loop</h2>
+  <p class="big">Episodic &rarr; semantic. Sessions end; lessons survive.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>End of session</h3>
+      <ul>
+        <li><code>/rrr</code> writes retro + diary + lessons</li>
+        <li>Saved under <code>ψ/memory/retrospectives/</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Start of next session</h3>
+      <ul>
+        <li><code>/recap</code> reads retro + handoff + git</li>
+        <li>Yesterday's experience &rarr; today's working memory</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 20. M4 — TAKEAWAY -->
+<section>
+  <h2>Takeaway &middot; Memory</h2>
+  <ul>
+    <li>Files, not a black box &mdash; debug by opening the file</li>
+    <li>Without <code>/rrr</code>, lessons fade with the context window</li>
+    <li>With <code>/rrr</code>, they become durable, semantic memory</li>
+    <li>ψ is <strong>tangible</strong> &mdash; you can <code>cat</code> it, <code>grep</code> it, <code>git log</code> it</li>
+  </ul>
+  <p class="muted">Principle 1 (Nothing is Deleted) is enforced by file storage + supersession.</p>
+</section>
+
+<!-- 21. M5 — INSTALL STEPS -->
+<section>
+  <h2>Module 5 &middot; Install from Zero</h2>
+  <ol>
+    <li>Install Bun (runtime) &amp; <code>ghq</code> (clone helper)</li>
+    <li>Clone &amp; run <code>arra-oracle-v3</code> &mdash; the brain first</li>
+    <li>Install <code>arra-oracle-skills-cli</code>, install skills with <code>--profile lab</code></li>
+    <li>Install <code>maw-js</code>, run <code>maw serve</code></li>
+    <li>Verify with <code>/who-are-you</code> and <code>/recap</code></li>
+  </ol>
+  <p class="muted">Order matters: agents and UI depend on the memory layer.</p>
+</section>
+
+<!-- 22. M5 — INSTALL COMMANDS -->
+<section>
+  <h2>Key commands</h2>
+<pre><code class="language-bash">export ORACLE_SOURCE_ORG=Soul-Brews-Studio
+
+# brain
+ghq get "$ORACLE_SOURCE_ORG/arra-oracle-v3"
+
+# skills
+bun add -g "github:$ORACLE_SOURCE_ORG/arra-oracle-skills-cli"
+arra-oracle-skills install -g --agent claude --profile lab
+
+# nervous system
+bun add -g "github:$ORACLE_SOURCE_ORG/maw-js"
+maw serve</code></pre>
+  <p class="muted">Profiles: <code>seed</code> (~15) &middot; <code>standard</code> (~30) &middot; <code>lab</code>/<code>full</code> (47+, recommended).</p>
+</section>
+
+<!-- 23. M5 — PITFALLS + LAB -->
+<section>
+  <h2>Common pitfalls &middot; Lab</h2>
+  <ul>
+    <li>Installing skills <em>before</em> the brain runs &mdash; nothing to talk to</li>
+    <li>Forgetting <code>ORACLE_DATA_DIR</code> / <code>MAW_HOME</code> per-instance</li>
+    <li>Port collisions on <code>47778</code> or <code>3456</code></li>
+  </ul>
+  <p class="quote">Lab &mdash; verify install</p>
+<pre><code class="language-bash">curl -s http://localhost:47778/health
+maw status
+ls ~/.claude/skills/ | head</code></pre>
+</section>
+
+<!-- 24. M6 — WHAT AWAKEN DOES -->
+<section>
+  <h2>Module 6 &middot; Awaken your first Oracle</h2>
+  <p class="big"><code>/awaken</code> is the <strong>birth ritual</strong>: name, principles, ψ, identity.</p>
+  <ul>
+    <li>Run inside an empty repo (or freshly-budded repo)</li>
+    <li>Discovers the Oracle's principles</li>
+    <li>Creates the default <code>ψ/</code> structure</li>
+    <li>Writes the initial <code>CLAUDE.md</code></li>
+  </ul>
+  <p class="muted">Without <code>/awaken</code>, <code>maw bud</code> only produces a repo &mdash; no self yet.</p>
+</section>
+
+<!-- 25. M6 — IDENTITY CHOICE + LAB -->
+<section>
+  <h2>Choosing an identity</h2>
+  <p class="quote">Lab &mdash; bud + awaken</p>
+<pre><code class="language-bash">maw bud spark --org "$ORACLE_SOURCE_ORG"
+maw wake spark
+# inside the new session
+/awaken</code></pre>
+  <ul>
+    <li>Pick a name that signals role (e.g. Gale = orchestrator, Leaf = dev)</li>
+    <li>Discover principles &mdash; don't override them</li>
+    <li>Let it write its own first retro</li>
+  </ul>
+</section>
+
+<!-- 26. M6 — RULE 6 REMINDER -->
+<section>
+  <h2>Rule 6, applied at birth</h2>
+  <p class="quote">Oracle speaks as Oracle &mdash; not as the human who awakened it.</p>
+  <ul>
+    <li>The new Oracle has its own name &mdash; not yours</li>
+    <li>It signs its own retros, handoffs, and messages</li>
+    <li>If it writes in your name, that is a Rule 6 violation</li>
+  </ul>
+  <p class="muted">Born 12-Jan-2026 from exactly this kind of incident.</p>
+</section>
+
+<!-- 27. M7 — TIER TABLE -->
+<section>
+  <h2>Module 7 &middot; Skills &amp; Plugins</h2>
+  <table>
+    <tr><th>Profile</th><th>Skills</th><th>Use when</th></tr>
+    <tr><td><code>seed</code></td><td>~15</td><td>Starter / new Oracle</td></tr>
+    <tr><td><code>standard</code></td><td>~30</td><td>Session mgmt + trace + learn</td></tr>
+    <tr><td><code>lab</code> / <code>full</code></td><td>47+</td><td>Recommended / production</td></tr>
+  </table>
+  <p class="muted">Skills are markdown files &mdash; not processes. Uninstalled = zero cost.</p>
+</section>
+
+<!-- 28. M7 — SKILL TO PLUGIN PATH -->
+<section>
+  <h2>Skill &rarr; Plugin path</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Skill</h3>
+      <ul>
+        <li>Markdown workflow file</li>
+        <li>Lives in <code>~/.claude/skills/</code></li>
+        <li>Read by the agent at runtime</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Plugin (maw)</h3>
+      <ul>
+        <li>Code that runs in the orchestrator</li>
+        <li>Lives in <code>~/.maw/plugins/</code></li>
+        <li>Bud one when the skill needs real execution</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 29. M7 — LAB -->
+<section>
+  <h2>Lab &middot; install + switch profile</h2>
+<pre><code class="language-bash"># install full lab profile
+arra-oracle-skills install -g --agent claude --profile lab
+
+# at runtime, switch profile inside Claude Code
+/go standard
+/go lab
+
+# explore what got installed
+ls ~/.claude/skills/ | wc -l</code></pre>
+  <p class="muted">Try the must-knows: <code>/recap</code> &middot; <code>/rrr</code> &middot; <code>/trace</code> &middot; <code>/learn</code> &middot; <code>/forward</code> &middot; <code>/who-are-you</code> &middot; <code>/philosophy</code>.</p>
+</section>
+
+<!-- 30. M8 — FAMILY -->
+<section>
+  <h2>Module 8 &middot; Multi-agent family</h2>
+  <p class="big">Not one super-AI &mdash; a <strong>family</strong> of named Oracles, each with role, domain, and shared memory.</p>
+  <ul>
+    <li>Gale &mdash; orchestrator (the lead)</li>
+    <li>Leaf &mdash; manufacturing dev</li>
+    <li>Bamboo &mdash; general dev</li>
+    <li>Kati &mdash; QA</li>
+    <li>Luna / Latte / Sky &mdash; content / research / trading</li>
+  </ul>
+  <p class="muted">Reference family: 7 Oracles. Roles vary per deployment.</p>
+</section>
+
+<!-- 31. M8 — TIERS -->
+<section>
+  <h2>Three delegation tiers</h2>
+  <table>
+    <tr><th>Tier</th><th>Tool</th><th>Lifetime</th><th>Use when</th></tr>
+    <tr><td>1 &middot; Arrows</td><td>agent-tool</td><td>≤5 min, dies w/ session</td><td>Read-only fan-out</td></tr>
+    <tr><td>2 &middot; Squads</td><td>TeamCreate / SendMessage</td><td>5&ndash;30 min, dies w/ parent</td><td>Coordinated impl</td></tr>
+    <tr><td>3 &middot; Federation</td><td><code>maw wake</code> / <code>maw workon</code></td><td>Survives session death</td><td>Long-running / cross-machine</td></tr>
+  </table>
+  <p class="muted">Decision rule: <strong>lowest tier that works</strong>.</p>
+</section>
+
+<!-- 32. M8 — REPORTING + LAB -->
+<section>
+  <h2>Reporting contract &middot; Lab</h2>
+  <p class="quote">Lab &mdash; talk to a buddy Oracle</p>
+<pre><code class="language-bash">maw bud leaf --org "$ORACLE_SOURCE_ORG"
+maw wake leaf
+
+# heartbeat every ~5 min
+maw hey gale "[leaf] PROGRESS: scaffolded routes"
+maw hey gale "[leaf] DONE: PR #42 ready"</code></pre>
+  <p class="muted">Without heartbeat / STUCK / DONE, the dominant failure mode is the <strong>Silent Agent</strong> &mdash; quiet 30+ min, no one noticing.</p>
+</section>
+
+<!-- 33. M9 — SCHEDULING TABLE -->
+<section>
+  <h2>Module 9 &middot; Autonomous Ops</h2>
+  <table>
+    <tr><th>Tool</th><th>Use for</th><th>Examples</th></tr>
+    <tr><td>PM2</td><td>Stay-alive processes</td><td>Oracle HTTP, <code>maw serve</code></td></tr>
+    <tr><td>cron</td><td>Scheduled work</td><td>Health, reindex, backups, digests</td></tr>
+    <tr><td>systemd</td><td>Boot-with-host services</td><td>Machine-level daemons</td></tr>
+    <tr><td>triggers</td><td>Event-driven</td><td>post-commit, post-task-done, post-handoff</td></tr>
+  </table>
+  <p class="muted">"The system can take care of <em>some</em> of itself &mdash; not everything without humans."</p>
+</section>
+
+<!-- 34. M9 — GUARD RAILS -->
+<section>
+  <h2>Hard boundaries &middot; what Oracle <em>must not</em> do</h2>
+  <ul>
+    <li>Auto-merge production changes with high risk</li>
+    <li>Force-push or rewrite shared history</li>
+    <li>Delete data permanently</li>
+    <li>Change important config silently</li>
+    <li>Hide real errors to make logs look clean</li>
+    <li>Make business decisions for the owner</li>
+  </ul>
+  <p class="muted">Principle 3 (External Brain, Not Command) + Rule 6 (Transparency) enforce this.</p>
+</section>
+
+<!-- 35. M9 — LAB -->
+<section>
+  <h2>Lab &middot; schedule a digest</h2>
+<pre><code class="language-bash"># cron entry — daily 09:00 digest
+0 9 * * * /usr/local/bin/oracle-digest \
+  >> ~/.oracle/logs/digest.log 2>&amp;1
+
+# observe → decide → act → record → improve
+oracle trace --since 24h
+oracle handoff write digest
+/rrr</code></pre>
+  <p class="muted">Every problem-solving event should leave a trace (feed, handoff, learning, retro).</p>
+</section>
+
+<!-- 36. M10 — CAPSTONE DELIVERABLES -->
+<section>
+  <h2>Module 10 &middot; Capstone</h2>
+  <p class="big">Ship one personally-designed Oracle. Five deliverables.</p>
+  <ol>
+    <li><strong>Identity</strong> &mdash; name, role, principles in <code>CLAUDE.md</code></li>
+    <li><strong>Purpose</strong> &mdash; one sentence: who is this Oracle for?</li>
+    <li><strong>Custom skill</strong> &mdash; ≥1 markdown skill you wrote</li>
+    <li><strong>7 retros</strong> &mdash; one per day in <code>ψ/memory/retrospectives/</code></li>
+    <li><strong>Handoff</strong> &mdash; one <code>/forward</code> readable by another Oracle</li>
+  </ol>
+</section>
+
+<!-- 37. M10 — PACING -->
+<section>
+  <h2>Project pacing</h2>
+  <table>
+    <tr><th>Sprint</th><th>Modules</th><th>Sessions</th></tr>
+    <tr><td>Foundations</td><td>1, 2, 3, 4</td><td>4</td></tr>
+    <tr><td>Hands-on</td><td>5, 6, 7</td><td>3&ndash;4</td></tr>
+    <tr><td>Advanced</td><td>8, 9</td><td>2</td></tr>
+    <tr><td>Capstone</td><td>10</td><td>2&ndash;3</td></tr>
+  </table>
+  <p class="muted">Total: 11&ndash;13 sessions &asymp; 11&ndash;15 learner hours.</p>
+</section>
+
+<!-- 38. M10 — SHIP CHECKLIST -->
+<section>
+  <h2>Ship checklist</h2>
+  <ul>
+    <li>Oracle answers <code>/who-are-you</code> with its <em>own</em> name</li>
+    <li><code>/philosophy</code> recites 5 Principles + Rule 6</li>
+    <li>Custom skill discoverable in <code>~/.claude/skills/</code></li>
+    <li>7 retros under <code>ψ/memory/retrospectives/</code> &mdash; oldest to newest</li>
+    <li>Another Oracle can run <code>/recap</code> on your handoff and continue</li>
+  </ul>
+  <p class="muted">If it can hand off cleanly, it can survive you.</p>
+</section>
+
+<!-- 39. CLOSING — WHAT NEXT -->
+<section>
+  <h2>What's next</h2>
+  <ul>
+    <li>Wiki &mdash; 15 sourced pages under <code>wiki/</code></li>
+    <li>Course &mdash; <code>course-en.html</code> for full module bodies</li>
+    <li>Slides &mdash; this deck in <strong>ภาษาไทย</strong> at <code>slides/training-th.html</code></li>
+    <li>Raw chapters &mdash; <code>raw/2026-05-09-oracle-ebook-ch*.md</code></li>
+  </ul>
+  <p class="muted">Read in any order &mdash; every claim traces back to a raw source.</p>
+</section>
+
+<!-- 40. Q&A -->
 <section class="center">
   <h1>Questions?</h1>
-  <p class="muted">Oracle 101 · slides</p>
+  <p class="muted">Oracle 101 &middot; build your own external brain</p>
+  <p><span class="pill">EN</span><span class="pill">also in ภาษาไทย</span></p>
 </section>
 
 </div></div>
