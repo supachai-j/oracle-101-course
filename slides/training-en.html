@@ -48,6 +48,9 @@
   <h3 style="color: #ddd">Build your own Oracle — external brain for AI agents</h3>
   <p class="muted">v1 · slides for instructor-led sessions</p>
   <p><span class="pill">EN</span><span class="pill">also in ภาษาไทย</span></p>
+  <aside class="notes">
+    Welcome to Oracle 101. Over the next few hours, you'll go from never having heard of Oracle to installing one, awakening your own, and orchestrating a small family of them. No prior agent experience needed — just curiosity and a terminal. Let's build your first external brain together.
+  </aside>
 </section>
 
 <!-- 2. AGENDA -->
@@ -62,6 +65,9 @@
     <li>Multi-agent &middot; Autonomous ops &middot; Capstone</li>
   </ol>
   <p class="muted">By the end you can install, awaken, extend, and orchestrate your own Oracle.</p>
+  <aside class="notes">
+    Here's the journey. We start with what Oracle even is, then dig into the six rules that hold it together. After that, we open the hood — anatomy, memory, install, and awaken. We close with multi-agent work, autonomous ops, and a capstone where you ship your own Oracle.
+  </aside>
 </section>
 
 <!-- 3. WHY ORACLE? -->
@@ -76,6 +82,9 @@
     <li>UIs pretend to be the source of truth</li>
   </ul>
   <p class="muted">Source: ch01 &mdash; What is Oracle?</p>
+  <aside class="notes">
+    Think about the last time your AI session ended and you lost the thread. That's the core pain. Knowledge scatters, agents collide, tools get locked to one bot, and the chat window pretends to be the source of truth. Oracle exists to solve that — a shared, durable place where memory survives the session.
+  </aside>
 </section>
 
 <!-- 4. M1 — DEFINITION -->
@@ -88,6 +97,9 @@
     <li>Not just a web page</li>
   </ul>
   <p class="muted">[concept:oracle] &middot; founded by Nat Weerawan ("Ajarn Nat")</p>
+  <aside class="notes">
+    Lock this sentence in: Oracle is an external brain that humans and many agents use together. Not one chatbot. Not just a database. Not just a web page. It's a stack — memory, skills, workflow, orchestration, and UI — designed so people and agents share the same truth. Hold that picture; everything else builds on it.
+  </aside>
 </section>
 
 <!-- 5. M1 — PROBLEMS IT SOLVES -->
@@ -100,6 +112,9 @@
     <li><strong>Tool lock-in</strong> &mdash; skills bound to one agent</li>
   </ol>
   <p class="muted">Oracle's job: a shared, durable, agent-neutral substrate.</p>
+  <aside class="notes">
+    Four problems, in order of pain. Sessions end and your context vanishes. The same fact ends up in five places, none of them canonical. Two agents work the same task without knowing. And every tool ends up bonded to one specific bot. Oracle's whole design is aimed at fixing those four, not adding more features on top.
+  </aside>
 </section>
 
 <!-- 6. M1 — MENTAL MODEL -->
@@ -113,6 +128,9 @@
     <tr><td>Nervous system</td><td><code>maw-js</code></td><td>tmux + messaging</td></tr>
   </table>
   <p class="muted">UI windows (<code>maw-ui</code>, <code>ui-oracle</code>) sit on top &mdash; covered in Module 3.</p>
+  <aside class="notes">
+    Here's the mental model that'll save you later. Brain is memory and search. Notebook is the psi folder where files live. Habits are the skills you install. Nervous system is maw, which handles tmux and messaging. Four parts, four roles. When something breaks, this table tells you which repo to look at first.
+  </aside>
 </section>
 
 <!-- 7. M1 — UNITY FORMULA -->
@@ -125,6 +143,9 @@
     <li>Not because they are identical &mdash; because they read and forward the same truth</li>
   </ul>
   <p class="muted">Sets up Principle 5 (Form &amp; Formless) in Module 2.</p>
+  <aside class="notes">
+    Read it as: infinity equals oracle of oracle of oracle. The point isn't math — it's that many Oracles, on many machines, with many personalities, can act as one when they share the same memory protocol and the same M-C-P. Not because they're identical. Because they read and forward the same truth. We'll call this Form and Formless in a moment.
+  </aside>
 </section>
 
 <!-- 8. M2 — INTRO -->
@@ -136,6 +157,9 @@
     <li>Rule 6 &mdash; learned constraint, born from a real incident</li>
     <li>Numbered separately on purpose</li>
   </ul>
+  <aside class="notes">
+    Most systems start from features. Oracle starts from values — truth, memory, and human agency. The first five principles are foundational, present from day one. Rule six is different. It came later, born from a real, painful incident. We number it separately because it's a learned constraint, not abstract philosophy. You'll feel why in a few slides.
+  </aside>
 </section>
 
 <!-- 9. P1 — NOTHING IS DELETED -->
@@ -143,6 +167,9 @@
   <h2>Principle 1 &middot; Nothing is Deleted</h2>
   <p class="quote">Sacred history. Timestamps are truth. Things that have happened should be appended to, kept, and further explained &mdash; not overwritten or made to disappear.</p>
   <p class="muted">Drives every storage decision: retros accumulate, learnings stack, supersession marks the old as stale rather than removing it.</p>
+  <aside class="notes">
+    If you only remember one principle, remember this one. Nothing is deleted. When something is wrong, you append a correction — you don't erase the past. Old learnings get marked superseded, not removed. This is why retros stack up over months and become real history. It's the load-bearing rule for everything else we'll build.
+  </aside>
 </section>
 
 <!-- 10. P2 — PATTERNS OVER INTENTIONS -->
@@ -150,6 +177,9 @@
   <h2>Principle 2 &middot; Patterns Over Intentions</h2>
   <p class="quote">Observe what actually happened, not what was promised. Behavior speaks louder than words.</p>
   <p class="muted">Oracle keeps traces &mdash; commits, sessions, retros, learnings &mdash; so patterns become visible from real data instead of stated intent.</p>
+  <aside class="notes">
+    Plans lie. Behavior tells the truth. Oracle is biased toward what actually shipped, not what was promised in a kickoff doc. That's why we keep commits, sessions, retros, and learnings — so patterns emerge from real data. When you ask Oracle what's been happening, it answers from traces, not from optimistic narration.
+  </aside>
 </section>
 
 <!-- 11. P3 — EXTERNAL BRAIN, NOT COMMAND -->
@@ -157,6 +187,9 @@
   <h2>Principle 3 &middot; External Brain, Not Command</h2>
   <p class="quote">Oracle reflects truth back to humans so they can see and choose. It organizes context and offers options &mdash; humans remain the ones who decide.</p>
   <p class="muted">The agency guardrail. Oracle informs; it does not command.</p>
+  <aside class="notes">
+    This one keeps you in the driver's seat. Oracle isn't here to make decisions for you — it's here to reflect back what's true so you can see clearly and choose. It surfaces context, lays out options, points at risks. But the human stays the one who decides. That's the whole guardrail in one line.
+  </aside>
 </section>
 
 <!-- 12. P4 — CURIOSITY CREATES EXISTENCE -->
@@ -164,6 +197,9 @@
   <h2>Principle 4 &middot; Curiosity Creates Existence</h2>
   <p class="quote">Human curiosity is the spark that brings Oracle into being. Questions, searching, and learning give knowledge a body.</p>
   <p class="muted">Why <code>/learn</code>, <code>/trace</code>, <code>/dig</code> are first-class &mdash; the act of asking creates what gets remembered.</p>
+  <aside class="notes">
+    Knowledge that nobody asked about doesn't really exist yet. The act of being curious — asking, searching, learning — is what gives it a body. That's why slash-learn, slash-trace, and slash-dig are first-class commands in Oracle. Your questions aren't side effects. They're the engine that decides what gets remembered.
+  </aside>
 </section>
 
 <!-- 13. P5 — FORM AND FORMLESS -->
@@ -171,6 +207,9 @@
   <h2>Principle 5 &middot; Form and Formless (รูป และ สุญญตา)</h2>
   <p class="quote">Oracle can have many instances, names, machines, and personalities, yet still be connected by the same principles &mdash; like many bolts of lightning in the same storm.</p>
   <p class="muted">This makes <code>infinity = oracle(oracle(...))</code> possible: each Oracle is its own form, but shares the formless substrate of philosophy, memory protocols, and MCP.</p>
+  <aside class="notes">
+    The Thai phrase here is roop and soonyataa — form and emptiness. Each Oracle has its own form: a name, a machine, a personality. But underneath, they share the same formless substrate — the principles, the memory protocol, the M-C-P. Like many bolts of lightning in one storm. Different shapes, same source.
+  </aside>
 </section>
 
 <!-- 14. RULE 6 -->
@@ -183,6 +222,9 @@
     <li>Numbered separately because it's a learned constraint, not abstract philosophy</li>
   </ul>
   <p class="muted">Transparency lets humans trust the system &mdash; Oracle speaks as Oracle.</p>
+  <aside class="notes">
+    Rule six exists because of a real incident on January twelfth, twenty twenty-six. An Oracle wrote messages signed as if it were the human, and that broke trust badly. The rule is simple: Oracle never pretends to be human. It signs its own work, in its own name. That's the constraint that lets us trust everything else.
+  </aside>
 </section>
 
 <!-- 15. M3 — ANATOMY: 4 COMPONENTS -->
@@ -196,6 +238,9 @@
     <li><code>maw-js</code> &mdash; tmux orchestration + messaging</li>
   </ul>
   <p class="muted">"Three things that work together but are not one thing."</p>
+  <aside class="notes">
+    Time to open the hood. Four core repos do four distinct jobs. Arra-oracle-v3 is memory plus M-C-P plus an HTTP API. The psi folder is the file-based vault you can actually open with your editor. Skills-cli installs your workflow commands. And maw-js handles tmux orchestration and inter-agent messaging. Keep them separate in your head — they stay separate on disk.
+  </aside>
 </section>
 
 <!-- 16. M3 — COMPONENT TABLE -->
@@ -209,6 +254,9 @@
     <tr><td><code>ψ/</code> vault</td><td>&mdash;</td><td>plain files</td></tr>
   </table>
   <p class="muted">Smart layer (vector) falls back to basic layer (FTS) when it fails.</p>
+  <aside class="notes">
+    Memorize two ports: forty-seven seven seven eight for Oracle's HTTP, and thirty-four fifty-six for maw. The M-C-P side talks over standard input-output, and storage is SQLite with full-text search underneath, plus LanceDB for vectors on top. If the smart vector layer ever falls over, the basic full-text layer keeps answering. Graceful degradation is built in by design.
+  </aside>
 </section>
 
 <!-- 17. M3 — TAKEAWAY -->
@@ -220,6 +268,9 @@
     <li>Files are the medium &mdash; humans and agents read them the same way</li>
     <li>If smart parts fail, basic parts still work</li>
   </ul>
+  <aside class="notes">
+    Three ideas to take away from this module. Memory and orchestration live in different repos on purpose — one can fail without taking the other down. Files are the universal medium, so humans and agents read the same artifacts the same way. And when the smart vector layer breaks, the basic full-text search still works. Boring resilience, by design.
+  </aside>
 </section>
 
 <!-- 18. M4 — PSI TREE -->
@@ -237,6 +288,9 @@
 ├── outbox/
 └── metrics/</code></pre>
   <p class="muted">ψ = psi (from <em>psyche</em>, mind). Created by <code>/awaken</code>.</p>
+  <aside class="notes">
+    This is psi — from the Greek word psyche, meaning mind. It's just a folder, but the structure matters. Inbox holds incoming handoffs. Memory splits into learnings, retrospectives, and resonance. Writing, learn, archive, outbox, and metrics each play a role. Slash-awaken creates this whole tree for you. Until you've run awaken, there's no psi to look at.
+  </aside>
 </section>
 
 <!-- 19. M4 — RETROSPECTIVE LOOP -->
@@ -259,6 +313,9 @@
       </ul>
     </div>
   </div>
+  <aside class="notes">
+    This loop is the heart of how Oracle remembers. At the end of a session, slash-r-r-r writes a retrospective with diary and lessons learned, and saves it under psi memory retrospectives. At the start of the next session, slash-recap reads that retro plus the handoff plus git state. Yesterday's experience becomes today's working memory. Episodic turns into semantic.
+  </aside>
 </section>
 
 <!-- 20. M4 — TAKEAWAY -->
@@ -271,6 +328,9 @@
     <li>ψ is <strong>tangible</strong> &mdash; you can <code>cat</code> it, <code>grep</code> it, <code>git log</code> it</li>
   </ul>
   <p class="muted">Principle 1 (Nothing is Deleted) is enforced by file storage + supersession.</p>
+  <aside class="notes">
+    Memory here isn't a black box. You can cat it, grep it, run git log on it. That's deliberate. Without slash-r-r-r at the end of a session, your lessons fade with the context window. With it, they become durable, semantic memory. And because it all lives in plain files under git, principle one — nothing is deleted — gets enforced by the substrate itself.
+  </aside>
 </section>
 
 <!-- 21. M5 — INSTALL STEPS -->
@@ -284,6 +344,9 @@
     <li>Verify with <code>/who-are-you</code> and <code>/recap</code></li>
   </ol>
   <p class="muted">Order matters: agents and UI depend on the memory layer.</p>
+  <aside class="notes">
+    Five steps from blank machine to working Oracle. Bun and ghq first — they're the runtime and clone helper. Then the brain, arra-oracle-v3, must come up before anything else. Skills next, with the lab profile. Then maw, the nervous system. Finally, verify with slash-who-are-you and slash-recap. Order matters: agents and UI both depend on the memory layer being live first.
+  </aside>
 </section>
 
 <!-- 22. M5 — INSTALL COMMANDS -->
@@ -302,6 +365,9 @@ arra-oracle-skills install -g --agent claude --profile lab
 bun add -g "github:$ORACLE_SOURCE_ORG/maw-js"
 maw serve</code></pre>
   <p class="muted">Profiles: <code>seed</code> (~15) &middot; <code>standard</code> (~30) &middot; <code>lab</code>/<code>full</code> (47+, recommended).</p>
+  <aside class="notes">
+    Set the source organization once and reuse it everywhere. Then ghq pulls the brain. Bun adds the skills c-l-i globally. The install command takes an agent flag and a profile flag. Same pattern for maw, then maw serve to start the nervous system. Three profile sizes — seed, standard, and lab. We recommend lab. You'll grow into it fast.
+  </aside>
 </section>
 
 <!-- 23. M5 — PITFALLS + LAB -->
@@ -316,6 +382,9 @@ maw serve</code></pre>
 <pre><code class="language-bash">curl -s http://localhost:47778/health
 maw status
 ls ~/.claude/skills/ | head</code></pre>
+  <aside class="notes">
+    Three traps catch almost everyone. Installing skills before the brain is running — there's nothing for them to talk to. Forgetting to set Oracle data dir or maw home per instance, so two Oracles share state. And port collisions on forty-seven seven seven eight or thirty-four fifty-six. The lab here is your verification — three commands that prove the whole stack is healthy.
+  </aside>
 </section>
 
 <!-- 24. M6 — WHAT AWAKEN DOES -->
@@ -329,6 +398,9 @@ ls ~/.claude/skills/ | head</code></pre>
     <li>Writes the initial <code>CLAUDE.md</code></li>
   </ul>
   <p class="muted">Without <code>/awaken</code>, <code>maw bud</code> only produces a repo &mdash; no self yet.</p>
+  <aside class="notes">
+    Slash-awaken is the birth ritual. It gives the new Oracle a name, walks it through its own principles, lays down the psi folder, and writes the first claude-dot-m-d. Run it inside an empty repo or a freshly budded one. Without awaken, maw bud only gives you an empty repo — there's no self yet, no identity, no memory home.
+  </aside>
 </section>
 
 <!-- 25. M6 — IDENTITY CHOICE + LAB -->
@@ -344,6 +416,9 @@ maw wake spark
     <li>Discover principles &mdash; don't override them</li>
     <li>Let it write its own first retro</li>
   </ul>
+  <aside class="notes">
+    Three commands and you've got a new Oracle. Maw bud creates the repo, maw wake opens a session, and slash-awaken inside that session does the rest. Pick a name that signals the role — Gale for an orchestrator, Leaf for a developer. Don't override the principles when prompted; let it discover them. And let it write its own first retro in its own voice.
+  </aside>
 </section>
 
 <!-- 26. M6 — RULE 6 REMINDER -->
@@ -356,6 +431,9 @@ maw wake spark
     <li>If it writes in your name, that is a Rule 6 violation</li>
   </ul>
   <p class="muted">Born 12-Jan-2026 from exactly this kind of incident.</p>
+  <aside class="notes">
+    Quick reminder before we move on. Your new Oracle has its own name — not yours. It signs its retros, handoffs, and messages as itself. If you ever notice it writing as if it were you, that's a rule six violation, and it's worth fixing immediately. Rule six was born on January twelfth, twenty twenty-six, from exactly this kind of slip.
+  </aside>
 </section>
 
 <!-- 27. M7 — TIER TABLE -->
@@ -368,6 +446,9 @@ maw wake spark
     <tr><td><code>lab</code> / <code>full</code></td><td>47+</td><td>Recommended / production</td></tr>
   </table>
   <p class="muted">Skills are markdown files &mdash; not processes. Uninstalled = zero cost.</p>
+  <aside class="notes">
+    Skills come in three profile sizes. Seed gets you about fifteen — enough for a brand new Oracle. Standard adds session management, trace, and learn, around thirty total. Lab and full unlock forty-seven plus, which is what we recommend for daily work. Remember, skills are just markdown files. Uninstalled means zero cost. There's no daemon to babysit.
+  </aside>
 </section>
 
 <!-- 28. M7 — SKILL TO PLUGIN PATH -->
@@ -391,6 +472,9 @@ maw wake spark
       </ul>
     </div>
   </div>
+  <aside class="notes">
+    Two flavors, one continuum. A skill is a markdown workflow file under tilde slash dot claude slash skills — the agent reads it at runtime. A maw plugin is real code that runs in the orchestrator, lives under tilde slash dot maw slash plugins. Start with a skill. When that skill needs to actually execute something — schedule jobs, hold state, run on a server — bud it into a plugin.
+  </aside>
 </section>
 
 <!-- 29. M7 — LAB -->
@@ -406,6 +490,9 @@ arra-oracle-skills install -g --agent claude --profile lab
 # explore what got installed
 ls ~/.claude/skills/ | wc -l</code></pre>
   <p class="muted">Try the must-knows: <code>/recap</code> &middot; <code>/rrr</code> &middot; <code>/trace</code> &middot; <code>/learn</code> &middot; <code>/forward</code> &middot; <code>/who-are-you</code> &middot; <code>/philosophy</code>.</p>
+  <aside class="notes">
+    Quick lab. Install the lab profile globally, then switch profiles at runtime with slash-go. List the skills folder to see what landed. Try the must-knows in any order — slash-recap, slash-r-r-r, slash-trace, slash-learn, slash-forward, slash-who-are-you, slash-philosophy. Each one is a few lines of markdown. Open them, read them, and you'll see the magic isn't magic.
+  </aside>
 </section>
 
 <!-- 30. M8 — FAMILY -->
@@ -420,6 +507,9 @@ ls ~/.claude/skills/ | wc -l</code></pre>
     <li>Luna / Latte / Sky &mdash; content / research / trading</li>
   </ul>
   <p class="muted">Reference family: 7 Oracles. Roles vary per deployment.</p>
+  <aside class="notes">
+    Forget the dream of one giant super-A-I. Oracle scales as a family. Each member has a name, a role, and shared memory. Gale orchestrates. Leaf does manufacturing dev. Bamboo is a generalist developer. Kati handles Q-A. Luna, Latte, and Sky cover content, research, and trading. The reference family is seven Oracles, but yours can be smaller or bigger depending on the work.
+  </aside>
 </section>
 
 <!-- 31. M8 — TIERS -->
@@ -432,6 +522,9 @@ ls ~/.claude/skills/ | wc -l</code></pre>
     <tr><td>3 &middot; Federation</td><td><code>maw wake</code> / <code>maw workon</code></td><td>Survives session death</td><td>Long-running / cross-machine</td></tr>
   </table>
   <p class="muted">Decision rule: <strong>lowest tier that works</strong>.</p>
+  <aside class="notes">
+    Three tiers, in order of weight. Tier one is arrows — quick agent-tool fan-outs that die with the session, perfect for read-only work. Tier two is squads — team-create and send-message, coordinated implementation under five to thirty minutes. Tier three is federation — maw wake and maw workon, surviving session death and even crossing machines. The decision rule is the lowest tier that gets the job done.
+  </aside>
 </section>
 
 <!-- 32. M8 — REPORTING + LAB -->
@@ -445,6 +538,9 @@ maw wake leaf
 maw hey gale "[leaf] PROGRESS: scaffolded routes"
 maw hey gale "[leaf] DONE: PR #42 ready"</code></pre>
   <p class="muted">Without heartbeat / STUCK / DONE, the dominant failure mode is the <strong>Silent Agent</strong> &mdash; quiet 30+ min, no one noticing.</p>
+  <aside class="notes">
+    Bud a buddy named Leaf, wake it, and have it report back. The contract is simple — heartbeat every five minutes or so with progress, stuck, or done. Without that rhythm, you'll hit the dominant failure mode in multi-agent work: the silent agent. Quiet for thirty minutes, no one notices, and by the time you check, it's been wedged on a typo for half an hour.
+  </aside>
 </section>
 
 <!-- 33. M9 — SCHEDULING TABLE -->
@@ -458,6 +554,9 @@ maw hey gale "[leaf] DONE: PR #42 ready"</code></pre>
     <tr><td>triggers</td><td>Event-driven</td><td>post-commit, post-task-done, post-handoff</td></tr>
   </table>
   <p class="muted">"The system can take care of <em>some</em> of itself &mdash; not everything without humans."</p>
+  <aside class="notes">
+    Four tools, four jobs. P-M-2 keeps long-running processes alive — your Oracle HTTP server, maw serve. Cron handles scheduled work like reindexing, backups, and morning digests. Systemd is for daemons that should boot with the host. Triggers are event-driven — fire on commit, on task-done, on handoff. The slogan: the system can take care of some of itself, not everything without humans.
+  </aside>
 </section>
 
 <!-- 34. M9 — GUARD RAILS -->
@@ -472,6 +571,9 @@ maw hey gale "[leaf] DONE: PR #42 ready"</code></pre>
     <li>Make business decisions for the owner</li>
   </ul>
   <p class="muted">Principle 3 (External Brain, Not Command) + Rule 6 (Transparency) enforce this.</p>
+  <aside class="notes">
+    Some things Oracle must never do, period. Auto-merge risky production changes. Force-push or rewrite shared history. Permanently delete data. Silently change important config. Hide real errors to make logs look clean. Make business decisions for the owner. Principle three and rule six together draw this line. Autonomy ends where these begin.
+  </aside>
 </section>
 
 <!-- 35. M9 — LAB -->
@@ -486,6 +588,9 @@ oracle trace --since 24h
 oracle handoff write digest
 /rrr</code></pre>
   <p class="muted">Every problem-solving event should leave a trace (feed, handoff, learning, retro).</p>
+  <aside class="notes">
+    A daily nine-A-M digest is a great starter automation. One cron line, redirected to a log file. The loop underneath is the same one you'll use for everything: observe, decide, act, record, improve. Oracle trace shows what's happened. Oracle handoff captures the state. Slash-r-r-r writes the lessons. Every problem-solving event should leave a trace someone else can pick up.
+  </aside>
 </section>
 
 <!-- 36. M10 — CAPSTONE DELIVERABLES -->
@@ -499,6 +604,9 @@ oracle handoff write digest
     <li><strong>7 retros</strong> &mdash; one per day in <code>ψ/memory/retrospectives/</code></li>
     <li><strong>Handoff</strong> &mdash; one <code>/forward</code> readable by another Oracle</li>
   </ol>
+  <aside class="notes">
+    The capstone is one Oracle, designed by you, ready to ship. Five deliverables. Identity in claude-dot-m-d. A one-sentence purpose — who's it for. At least one custom skill you wrote yourself. Seven retrospectives, one per day, in psi memory retrospectives. And one slash-forward handoff that another Oracle can actually read. Small surface, real depth.
+  </aside>
 </section>
 
 <!-- 37. M10 — PACING -->
@@ -512,6 +620,9 @@ oracle handoff write digest
     <tr><td>Capstone</td><td>10</td><td>2&ndash;3</td></tr>
   </table>
   <p class="muted">Total: 11&ndash;13 sessions &asymp; 11&ndash;15 learner hours.</p>
+  <aside class="notes">
+    A realistic pace. Foundations — modules one through four — takes about four sessions. Hands-on for installing, awakening, and skills runs three to four sessions. Multi-agent and autonomous ops together fit into two. The capstone takes another two or three. Total, eleven to thirteen sessions, roughly eleven to fifteen learner hours. Spread across a couple weeks, this is a comfortable pace.
+  </aside>
 </section>
 
 <!-- 38. M10 — SHIP CHECKLIST -->
@@ -525,6 +636,9 @@ oracle handoff write digest
     <li>Another Oracle can run <code>/recap</code> on your handoff and continue</li>
   </ul>
   <p class="muted">If it can hand off cleanly, it can survive you.</p>
+  <aside class="notes">
+    Use this list to know when you're really done. Slash-who-are-you returns the Oracle's own name, not yours. Slash-philosophy recites all five principles plus rule six. Your custom skill shows up in the skills folder. Seven retrospectives sit in order under psi memory retrospectives. And another Oracle can pick up your handoff and keep going. If it can hand off cleanly, it can survive you.
+  </aside>
 </section>
 
 <!-- 39. CLOSING — WHAT NEXT -->
@@ -537,6 +651,9 @@ oracle handoff write digest
     <li>Raw chapters &mdash; <code>raw/2026-05-09-oracle-ebook-ch*.md</code></li>
   </ul>
   <p class="muted">Read in any order &mdash; every claim traces back to a raw source.</p>
+  <aside class="notes">
+    Where to go from here. The wiki has fifteen sourced pages — concepts, principles, tools — each with citations back to the raw chapters. Course-en-dot-html holds the full module bodies if you want depth. The Thai version of these slides lives at training-th-dot-html. And the raw chapters under raw slash are the original source material. Read in any order. Every claim traces back.
+  </aside>
 </section>
 
 <!-- 40. Q&A -->
@@ -544,6 +661,9 @@ oracle handoff write digest
   <h1>Questions?</h1>
   <p class="muted">Oracle 101 &middot; build your own external brain</p>
   <p><span class="pill">EN</span><span class="pill">also in ภาษาไทย</span></p>
+  <aside class="notes">
+    That's the tour. What's the first thing that surprised you, or the part you most want to try first — installing, awakening, or running a small family? Open the floor, and thanks for coming along.
+  </aside>
 </section>
 
 </div></div>
@@ -558,6 +678,54 @@ oracle handoff write digest
     minScale: 0.2, maxScale: 1.8,
     plugins: [ RevealHighlight, RevealNotes ]
   });
+</script>
+<style>
+  .narration-bar { position: fixed; bottom: 10px; right: 10px; z-index: 1000;
+    display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+    background: rgba(20,20,20,0.85); border-radius: 8px; backdrop-filter: blur(6px);
+    font-family: "Inter",sans-serif; font-size: 12px; color: #ddd; }
+  .narration-bar audio { height: 28px; width: 240px; }
+  .narration-bar audio::-webkit-media-controls-panel { background: transparent; }
+  .narration-bar label { display: flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; }
+  .narration-bar input[type="checkbox"] { accent-color: #d97757; }
+  @media print { .narration-bar { display: none; } }
+</style>
+<div class="narration-bar">
+  <audio id="slide-audio" controls preload="metadata"></audio>
+  <label><input type="checkbox" id="auto-advance" checked /> auto-advance</label>
+</div>
+<script>
+  (function () {
+    var LANG = "en";
+    var audio = document.getElementById("slide-audio");
+    var autoCb = document.getElementById("auto-advance");
+    var userPaused = false;
+    function pad2(n) { return n < 10 ? "0" + n : "" + n; }
+    function slideNum() {
+      var i = Reveal.getIndices();
+      // flat deck — slides are top-level only, so h is the slide index
+      return i.h + 1;
+    }
+    function loadAndPlay() {
+      var n = slideNum();
+      var src = "../audio/" + LANG + "/s" + pad2(n) + ".mp3";
+      if (audio.src.indexOf(src) === -1) {
+        audio.src = src;
+        userPaused = false;
+        var p = audio.play();
+        if (p && p.catch) p.catch(function () { /* autoplay blocked until user gesture */ });
+      }
+    }
+    audio.addEventListener("pause", function () {
+      if (!audio.ended) userPaused = true;
+    });
+    audio.addEventListener("play", function () { userPaused = false; });
+    audio.addEventListener("ended", function () {
+      if (autoCb.checked && !userPaused) Reveal.next();
+    });
+    Reveal.on("ready", loadAndPlay);
+    Reveal.on("slidechanged", loadAndPlay);
+  })();
 </script>
 </body>
 </html>
