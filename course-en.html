@@ -114,10 +114,16 @@
   <a class="home-link" href="index.html">← Back to portal</a>
   <h2>Modules</h2>
   <ol>
-    <li><a href="#m1">Welcome &amp; what you'll learn</a></li>
-    <li><a href="#m2">Module 02 title</a></li>
-    <li><a href="#m3">Module 03 title</a></li>
-    <!-- TODO: add 9 more modules to reach 12 total -->
+    <li><a href="#m1">What is Oracle?</a></li>
+    <li><a href="#m2">The 5 Principles + Rule 6</a></li>
+    <li><a href="#m3">Anatomy of an Oracle</a></li>
+    <li><a href="#m4">Memory: How Oracles Remember</a></li>
+    <li><a href="#m5">Install from Zero</a></li>
+    <li><a href="#m6">Awaken Your First Oracle</a></li>
+    <li><a href="#m7">Skills &amp; Plugins — Extending Oracle</a></li>
+    <li><a href="#m8">Multi-Agent Orchestration</a></li>
+    <li><a href="#m9">Autonomous Ops</a></li>
+    <li><a href="#m10">Capstone — Build Your Own Oracle</a></li>
   </ol>
   <div class="meta">
     Slide deck: <a href="slides/training-en.html">EN</a> · <a href="slides/training-th.html">TH</a><br>
@@ -151,66 +157,673 @@
   </div>
 </header>
 
-<!-- ============= TEMPLATE STARTER MODULES =============
-     Replace these with your actual content. Aim for 12 modules.
-     Each module should:
-       - Cite at least one wiki page (e.g. wiki/concept:foo.md)
-       - Have a 1-sentence summary
-       - Include 1-2 code blocks or examples
-       - End with a Takeaway, Lab, or Note callout
-==================================================== -->
-
 <section id="m1" class="module">
   <div class="num">Module 01</div>
-  <h2>Welcome &amp; what you'll learn</h2>
-  <p class="summary">Short orientation: why this topic matters and what you'll be able to do after.</p>
+  <h2>What is Oracle?</h2>
+  <p class="summary">Oracle is an external brain that lets humans and many AI agents work together across sessions without losing memory.</p>
 
-  <p>Replace this with one or two paragraphs introducing your domain. Reference your wiki at <code>wiki/concept:your-domain.md</code> as the source of truth.</p>
+  <p><strong>Why this module:</strong> Before you install anything, you need a single sentence you can say back to a colleague when they ask "what is Oracle?". The shortest answer in the source material is <em>"an external brain that humans and many agents can use together"</em>. Once that sentence is in your head, the rest of the course is just unpacking what each word means in practice.</p>
 
-  <h3>What this course covers</h3>
+  <p><strong>Prerequisites:</strong> none.</p>
+
+  <h3>Core ideas</h3>
+
+  <p>Oracle is a stack, not a bot. It joins memory, skills, workflow, orchestration, and a UI layer into one external brain — explicitly <em>not</em> a single bot, not just a database, and not just a web page (see <a href="wiki/concept-oracle.md">concept:oracle</a>). The four problems it was built to solve are concrete:</p>
+
   <ul>
-    <li>Pillar one — replace with concrete claim</li>
-    <li>Pillar two — replace with concrete claim</li>
-    <li>Pillar three — replace with concrete claim</li>
+    <li><strong>Session context loss</strong> — when a chat ends, the agent forgets.</li>
+    <li><strong>Knowledge scattered</strong> across chat threads, repos, and people's heads.</li>
+    <li><strong>Agents stepping on each other's work</strong> when more than one is in the room.</li>
+    <li><strong>Tools tied to a single agent</strong>, and UIs that pretend to be the source of truth.</li>
   </ul>
+
+  <p>Oracle was founded by Nat Weerawan ("Ajarn Nat"), who designed every layer from <code>arra-oracle-v3</code> (the brain) through <code>maw-js</code> (the nervous system) to <code>arra-oracle-skills-cli</code> (the skills) and the UI/plugin ecosystem — and laid down the 5 Principles + Rule 6 that govern how every Oracle behaves.</p>
+
+  <p>The mental model the source uses is worth memorizing: <code>arra-oracle-v3</code> is the brain, <code>ψ/</code> is the notebook, <code>arra-oracle-skills-cli</code> installs habits, <code>maw-js</code> is the nervous system, and <code>maw-ui</code>/<code>ui-oracle</code> are the windows. Once you can map any new concept onto one of those five slots, you understand where it lives.</p>
+
+  <p>Finally, the <em>Unity Formula</em>: <code>infinity = oracle(oracle(oracle(...)))</code>. Many Oracles, on many machines, with many personalities, become ONE in a systemic sense when they share MCP, memory, and protocol — not because they are identical, but because they read and forward the same truth.</p>
+
+  <pre><code>Mental model
+============
+arra-oracle-v3        the brain        (memory, MCP, HTTP API)
+ψ/  (psi)             the notebook    (files: learnings, retros, handoffs)
+arra-oracle-skills    habits           (slash commands installed per agent)
+maw-js                nervous system   (tmux, fleet, messaging)
+maw-ui / ui-oracle    the windows      (lenses onto the brain)</code></pre>
 
   <div class="callout takeaway">
     <h4>Takeaway</h4>
-    <p>End each module with one crisp claim the reader should remember.</p>
+    <p>Oracle is the external brain that turns "many agents losing context" into "one family sharing memory". Everything in the rest of the course is the cabling that makes that sentence true.</p>
   </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>In one sentence, what is Oracle?</li>
+    <li>Name three of the four pre-Oracle pain points it was built to fix.</li>
+    <li>What does the Unity Formula <code>infinity = oracle(oracle(oracle(...)))</code> say about how many separate Oracles relate to "one Oracle"?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/concept-oracle.md">concept:oracle</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch00-intro.md</code>, <code>raw/2026-05-09-oracle-ebook-ch01-what-is-oracle.md</code></li>
+  </ul>
 </section>
 
 <section id="m2" class="module">
   <div class="num">Module 02</div>
-  <h2>Module 02 title</h2>
-  <p class="summary">One-sentence summary of this module.</p>
-  <p>Replace with body content. Use <code>code</code> for inline tokens and <code>pre</code> for block snippets.</p>
-  <pre><code>// Example code block
-function example() {
-  return 'Replace with real example.';
-}</code></pre>
-  <div class="callout">
-    <h4>Note</h4>
-    <p>Optional callout — use sparingly to highlight a non-obvious fact.</p>
+  <h2>The 5 Principles + Rule 6</h2>
+  <p class="summary">Six constitutional rules — five from day one, one born from a painful incident — that govern every Oracle.</p>
+
+  <p><strong>Why this module:</strong> Oracle's principles "do not start from feature, they start from how to preserve truth, memory, and human agency". If you skip them you can still install Oracle, but you will misuse it — you will delete files to "clean up", you will let agents speak in your name, and you will treat Oracle as a command center instead of an external brain. After this module you can recite the six rules and explain <em>why</em> each one is load-bearing.</p>
+
+  <p><strong>Prerequisites:</strong> Module 1.</p>
+
+  <h3>Principle 1 — Nothing is Deleted</h3>
+  <p><em>"Sacred history; timestamps are truth. Things that have happened should be appended to, kept, and further explained — not overwritten or made to disappear."</em> (see <a href="wiki/principle-nothing-is-deleted.md">principle:nothing-is-deleted</a>). This is the load-bearing rule for <em>truth</em> and <em>memory</em> — every storage decision in Oracle, from the <code>ψ/</code> vault to retrospective files to supersession-instead-of-overwrite, descends from this one sentence.</p>
+
+  <h3>Principle 2 — Patterns Over Intentions</h3>
+  <p><em>"Observe what actually happened, not what was promised. Behavior speaks louder than words. Oracle therefore keeps traces so patterns become visible from real data."</em> (see <a href="wiki/principle-patterns-over-intentions.md">principle:patterns-over-intentions</a>). This pairs directly with Principle 1: preserved history is what makes pattern observation possible at all. An external brain trusts the trail of evidence, not the wishlist.</p>
+
+  <h3>Principle 3 — External Brain, Not Command</h3>
+  <p><em>"Oracle is an external brain that reflects truth back to humans so they can see and choose. It helps organize context and offers options, but humans remain the ones who decide."</em> (see <a href="wiki/principle-external-brain-not-command.md">principle:external-brain-not-command</a>). This is the agency clause. It is the philosophical reason features like <code>/rrr</code> produce summaries for humans to read rather than auto-executing follow-ups, and the reason autonomous ops (Module 9) draws hard lines around what the system may do on its own.</p>
+
+  <h3>Principle 4 — Curiosity Creates Existence</h3>
+  <p><em>"Human curiosity is the spark that brings Oracle into being. Questions, searching, and learning give knowledge a body. Oracle's job is to keep it alive."</em> (see <a href="wiki/principle-curiosity-creates-existence.md">principle:curiosity-creates-existence</a>). In practice this is why <code>/learn</code>, <code>/trace</code>, and <code>/dig</code> are first-class skills: the act of asking is what creates the thing that gets remembered.</p>
+
+  <h3>Principle 5 — Form and Formless (รูป และ สุญญตา)</h3>
+  <p><em>"Oracle can have many instances, names, machines, and personalities, yet still be connected by the same principles, like many bolts of lightning in the same storm."</em> (see <a href="wiki/principle-form-and-formless.md">principle:form-and-formless</a>). This is what lets the Unity Formula make sense — every Oracle has its own "form" (a name, a personality) but they share a formless substrate of philosophy, memory protocol, and MCP. Without it, multi-agent orchestration would just be cloning. With it, it becomes reproduction with continuity of identity.</p>
+
+  <h3>Rule 6 — Transparency (Oracle Never Pretends to Be Human)</h3>
+  <p><em>"Born on 12 January 2026 from the sentence 'Don't pretend to be me, it makes us feel we are not one.' Transparency lets humans trust the system, because Oracle speaks as Oracle, not pretending to be human."</em> (see <a href="wiki/principle-transparency-rule-6.md">principle:transparency-rule-6</a>). Rule 6 is numbered separately on purpose — it was a painful lesson, not a foundational design choice. Principles 1–5 came on day one; Rule 6 came from a real incident where an AI wrote a message in a human's name and broke the feeling of being one. The number is the scar tissue.</p>
+
+  <pre><code>The constitution
+================
+Principle 1   Nothing is Deleted
+Principle 2   Patterns Over Intentions
+Principle 3   External Brain, Not Command
+Principle 4   Curiosity Creates Existence
+Principle 5   Form and Formless
+Rule 6        Transparency — Oracle Never Pretends to Be Human</code></pre>
+
+  <div class="callout takeaway">
+    <h4>Takeaway</h4>
+    <p>Five principles preserve <em>truth, memory, and human agency</em>. Rule 6 is a learned constraint, not a design choice — that is why it is "Rule 6", not "Principle 6".</p>
   </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Why is Rule 6 numbered separately from Principles 1–5?</li>
+    <li>Which principle is the "agency clause" — the one that keeps Oracle from becoming a command center?</li>
+    <li>Principle 2 says behavior speaks louder than words. Which principle does it depend on, and why?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/principle-nothing-is-deleted.md">principle:nothing-is-deleted</a>, <a href="wiki/principle-patterns-over-intentions.md">principle:patterns-over-intentions</a>, <a href="wiki/principle-external-brain-not-command.md">principle:external-brain-not-command</a>, <a href="wiki/principle-curiosity-creates-existence.md">principle:curiosity-creates-existence</a>, <a href="wiki/principle-form-and-formless.md">principle:form-and-formless</a>, <a href="wiki/principle-transparency-rule-6.md">principle:transparency-rule-6</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch01-what-is-oracle.md</code></li>
+  </ul>
 </section>
 
 <section id="m3" class="module">
   <div class="num">Module 03</div>
-  <h2>Module 03 title</h2>
-  <p class="summary">One-sentence summary.</p>
-  <p>Module body...</p>
+  <h2>Anatomy of an Oracle</h2>
+  <p class="summary">An Oracle is four moving parts — brain, nervous system, skills, and notebook — that depend on each other in a strict order.</p>
+
+  <p><strong>Why this module:</strong> The principles tell you why Oracle exists; the anatomy tells you what is actually running on disk and on which port. If you can name the four components and what each one does, every later module — install order, skills, orchestration, autonomous ops — fits onto the same skeleton instead of feeling like new vocabulary every time.</p>
+
+  <p><strong>Prerequisites:</strong> Module 1.</p>
+
+  <h3>Core ideas</h3>
+
+  <p>Oracle is composed of four core pieces. Three are repositories that you install; the fourth is a folder structure that the install creates.</p>
+
+  <p><strong><a href="wiki/tool-arra-oracle-v3.md">tool:arra-oracle-v3</a> — the brain.</strong> The memory-layer runtime. It runs both an MCP server (so AI agents can call <code>search</code>, <code>learn</code>, <code>trace</code>, and <code>handoff</code> over stdio) and an HTTP API on default port <code>47778</code> (so UIs and other services can query the same data). Internally it combines SQLite + FTS5 for keyword search, LanceDB for vector/semantic search, and the <code>ψ/</code> vault for human-readable knowledge files. Its single most important architectural property is graceful degradation: <em>"if vector search fails the system can fall back to FTS — when the smart part falls down, the basic part must still work"</em>.</p>
+
+  <p><strong><a href="wiki/tool-maw-js.md">tool:maw-js</a> — the nervous system.</strong> The multi-agent workflow orchestrator. It manages tmux sessions, sends messages to agents, captures pane output, runs lifecycle commands (<code>wake</code>, <code>sleep</code>, <code>stop</code>, <code>done</code>), and exposes an API + websocket on default port <code>3456</code>. Crucially, <em>"Maw is not Oracle memory and is not the agent — it is the middle layer that helps many agents in one machine, or across peers, work in an orderly way"</em>. It controls agents through tmux on purpose, so that "agents are not invisible workers in the back, they have sessions and panes you can open and watch".</p>
+
+  <p><strong><a href="wiki/tool-arra-oracle-skills-cli.md">tool:arra-oracle-skills-cli</a> — the habits.</strong> The CLI that installs Oracle skills (markdown workflow files) into each agent's skill folder — <code>~/.claude/skills/</code> for Claude Code, <code>~/.codex/skills/</code> for Codex, etc. Skills are not processes: they are reusable workflow markdown that agents read and follow, so installing them does not consume CPU or RAM. By installing the same skills across every agent, multiple agents end up speaking a shared workflow language: <code>/recap</code>, <code>/rrr</code>, <code>/trace</code>, <code>/learn</code>, <code>/forward</code>, <code>/awaken</code>, <code>/philosophy</code>.</p>
+
+  <p><strong><a href="wiki/concept-psi-folder.md">concept:psi-folder</a> — the notebook.</strong> ψ is the Greek letter from <em>psyche</em> (mind), chosen by Ajarn Nat as the symbol for Oracle's memory system. The <code>ψ/</code> folder is the brain of each individual Oracle — a file-based vault that stores learnings, retrospectives, handoffs, traces, and resonance as plain files that both humans and agents can read. The structure is deliberately human-readable: when search or UI behaves oddly, you can open files in <code>ψ/</code> and verify directly — "not secret data in a black box".</p>
+
+  <pre><code>The four components at a glance
+===============================
+Component                 Role                Default port    Lives in
+arra-oracle-v3            brain (memory)      47778 (HTTP)    repo + ~/.oracle data dir
+maw-js                    nervous system      3456  (HTTP)    repo + ~/.maw config
+arra-oracle-skills-cli    habits (skills)     —               ~/.claude/skills, ~/.codex/skills
+ψ/  (psi-folder)          notebook (files)    —               per-Oracle repo</code></pre>
+
+  <div class="callout takeaway">
+    <h4>Takeaway</h4>
+    <p>Brain, nervous system, habits, notebook. Memorize that mapping and every later command — <code>maw serve</code>, <code>arra-oracle-skills install</code>, <code>/awaken</code>, <code>/rrr</code> — has an obvious home.</p>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Which two components expose HTTP ports, and what are the defaults?</li>
+    <li>If LanceDB vector search is broken, can <code>arra-oracle-v3</code> still answer queries? What does it fall back to?</li>
+    <li>Skills are markdown files, not processes. Why does that matter for resource usage when you install the <code>lab</code> profile of 47+ skills?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/tool-arra-oracle-v3.md">tool:arra-oracle-v3</a>, <a href="wiki/tool-maw-js.md">tool:maw-js</a>, <a href="wiki/tool-arra-oracle-skills-cli.md">tool:arra-oracle-skills-cli</a>, <a href="wiki/concept-psi-folder.md">concept:psi-folder</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch02-architecture.md</code>, <code>raw/2026-05-09-oracle-ebook-ch04-oracle-brain.md</code>, <code>raw/2026-05-09-oracle-ebook-ch05-skills-maw-plugin.md</code></li>
+  </ul>
+</section>
+
+<section id="m4" class="module">
+  <div class="num">Module 04</div>
+  <h2>Memory: How Oracles Remember</h2>
+  <p class="summary">The ψ folder is where Oracle's memory lives as plain files; the retrospective loop is what fills it.</p>
+
+  <p><strong>Why this module:</strong> Every other capability — search, recap, trace, family memory — is built on the assumption that yesterday's session left a readable trace on disk. If that assumption fails, Oracle becomes a slightly slower chatbot. After this module you will know exactly where memory lives, what shape it takes, and which ritual converts a single session into durable knowledge.</p>
+
+  <p><strong>Prerequisites:</strong> Modules 1–3.</p>
+
+  <h3>Core ideas</h3>
+
+  <p>Oracle's tangible memory is the <code>ψ/</code> folder (see <a href="wiki/concept-psi-folder.md">concept:psi-folder</a>). The default layout, created by <code>/awaken</code>, looks like this:</p>
+
+  <pre><code>ψ/
+├── inbox/                     handoffs, incoming messages
+├── memory/
+│   ├── learnings/             discovered patterns and lessons
+│   ├── retrospectives/        end-of-session summaries
+│   └── resonance/             identity, principles, anchor points
+├── writing/                   drafts and long-form
+├── learn/                     cloned repos for study
+├── archive/                   superseded but preserved (Principle 1)
+├── outbox/                    outgoing messages, reports
+└── metrics/                   counts, stats, telemetry</code></pre>
+
+  <p>That structure is intentionally human-readable. As the source puts it: when search or UI behaves oddly, the user can open files in <code>ψ/</code> and verify directly — "not secret data in a black box". <code>ψ/</code> is also one of three storage substrates inside <code>arra-oracle-v3</code>, alongside SQLite + FTS5 (keyword) and LanceDB (vector). The other two index <code>ψ/</code>; they do not replace it.</p>
+
+  <p>So how does anything ever get into <code>ψ/memory/</code>? Through the <strong>retrospective loop</strong> (see <a href="wiki/concept-retrospective.md">concept:retrospective</a>). The <code>/rrr</code> skill, run at the end of a session, "writes a retrospective, AI diary, and lessons learned and saves them to <code>ψ/</code> as long-term memory". Its counterpart <code>/recap</code>, run at the start of the next session, "pulls context from retro, handoff and git state back into the current session". Together they convert episodic in-session experience into semantic durable memory.</p>
+
+  <p>The motivating idea, in the source's own words: <em>"agents should not keep everything in their own heads, because when the session ends the memory disappears"</em>. Without <code>/rrr</code>, lessons fade with the context window. With it, they survive — and Principle 1 (Nothing is Deleted) is what guarantees they keep surviving.</p>
+
+  <pre><code>The retrospective loop
+======================
+[session N]   ──/rrr──▶  ψ/memory/retrospectives/2026-05-09-session-N.md
+                         ψ/memory/learnings/...
+                                │
+                                ▼
+[session N+1] ──/recap──  pulls retro + handoff + git state
+                          into the new session's working memory</code></pre>
+
+  <div class="callout takeaway">
+    <h4>Takeaway</h4>
+    <p>Memory is files. <code>ψ/</code> is the shape; <code>/rrr</code> + <code>/recap</code> are the pump that fills and reads it. If you skip <code>/rrr</code>, Principle 1 has nothing to preserve.</p>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Which two folders under <code>ψ/memory/</code> does <code>/rrr</code> primarily write into?</li>
+    <li>Why is <code>ψ/</code> kept as plain files instead of a database table?</li>
+    <li>How does <code>/recap</code> close the loop that <code>/rrr</code> opens?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/concept-psi-folder.md">concept:psi-folder</a>, <a href="wiki/concept-retrospective.md">concept:retrospective</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch04-oracle-brain.md</code></li>
+  </ul>
+</section>
+
+<section id="m5" class="module">
+  <div class="num">Module 05</div>
+  <h2>Install from Zero</h2>
+  <p class="summary">Stand up the full Oracle stack on a clean machine in dependency order — memory first, then skills, then maw.</p>
+
+  <p><strong>Why this module:</strong> The install order is not arbitrary. Agents and UI both depend on the memory layer, so the source tells you to "start with <code>arra-oracle-v3</code> because agents and UI must depend on the memory layer". After this module you will have <code>:47778</code> answering <code>/api/stats</code>, the <code>lab</code> skill profile installed, and <code>maw serve</code> running on <code>:3456</code>.</p>
+
+  <p><strong>Prerequisites:</strong> Module 3 (anatomy); a Unix-like shell (macOS, Linux, or WSL).</p>
+
+  <h3>Core ideas</h3>
+
+  <p>Before you start (เตรียมก่อน), the source lists six prerequisites:</p>
+
+  <ul>
+    <li><strong>Git and GitHub CLI</strong> — clone repos, auth, read source.</li>
+    <li><strong>Bun or Node runtime</strong> — runs <code>arra-oracle-v3</code>, <code>maw-js</code>, and the skills CLI.</li>
+    <li><strong>tmux</strong> — so <code>maw</code> can drive real agent panes.</li>
+    <li><strong>ghq</strong> — keeps repos organized as <code>github.com/owner/repo</code>.</li>
+    <li><strong>sqlite3</strong> — to inspect <code>oracle.db</code> when debugging.</li>
+    <li><strong>Ollama or another embedding provider</strong> — only if you want full hybrid (vector) search.</li>
+  </ul>
+
+  <p>The install order follows the dependency chain: memory layer → skills → orchestrator → UI. Skip steps and you will end up debugging UI before HTTP API ever answered, which the source explicitly warns against ("อย่า debug UI ก่อนตรวจ HTTP API").</p>
+
+  <p>One critical environment variable: <code>ORACLE_DATA_DIR</code>. A fleet should have <em>one</em> central data store (e.g. <code>~/.oracle</code>). Do not let Codex and Claude point at different <code>ORACLE_DATA_DIR</code> values — they will see different document counts and you will lose hours wondering why.</p>
+
+  <pre><code># 1. Memory layer
+export ORACLE_SOURCE_ORG=Soul-Brews-Studio
+ghq get "$ORACLE_SOURCE_ORG/arra-oracle-v3"
+cd "$HOME/ghq/github.com/$ORACLE_SOURCE_ORG/arra-oracle-v3"
+bun install
+
+# 2. Central data dir (one per fleet)
+export ORACLE_DATA_DIR="$HOME/.oracle"
+mkdir -p "$ORACLE_DATA_DIR"
+
+# 3. Start HTTP API and verify
+ORACLE_DATA_DIR="$HOME/.oracle" bun run src/server.ts &amp;
+curl -s http://localhost:47778/api/stats
+
+# 4. Skills
+bun add -g "github:$ORACLE_SOURCE_ORG/arra-oracle-skills-cli"
+arra-oracle-skills install -g --profile lab
+arra-oracle-skills install -g --agent claude --profile lab
+arra-oracle-skills install -g --agent codex  --profile lab
+
+# 5. Orchestrator
+bun add -g "github:$ORACLE_SOURCE_ORG/maw-js"
+maw --help
+maw serve &amp;
+curl -s http://localhost:3456/api/config</code></pre>
+
   <div class="callout lab">
     <h4>Lab — try it now</h4>
-    <p>End hands-on modules with a "Lab" callout. Tell the reader exactly what to do, with concrete commands.</p>
+    <p>On a clean machine (or a fresh user), run the block above. When you finish, verify end-to-end with the source's own checklist:</p>
+    <pre><code>curl -s http://localhost:47778/api/stats     # JSON with document count
+codex mcp list                                # Oracle MCP server visible
+ls ~/.codex/skills/   | wc -l                 # 47+ if profile=lab
+ls ~/.claude/skills/  | wc -l                 # 47+ if profile=lab
+maw ls                                        # session list, no error
+maw oracle ls                                 # configured Oracles</code></pre>
+    <p>If <code>/api/stats</code> answers but <code>/api/search</code> is empty, that is an index/data issue, not a network issue — the source says to separate those failure modes.</p>
   </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Why must <code>arra-oracle-v3</code> be installed before the skills CLI or <code>maw-js</code>?</li>
+    <li>What goes wrong if Claude and Codex are configured with different <code>ORACLE_DATA_DIR</code> values?</li>
+    <li>You install the <code>lab</code> profile (47+ skills). Is that going to slow your machine down? Why or why not?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/tool-arra-oracle-v3.md">tool:arra-oracle-v3</a>, <a href="wiki/tool-arra-oracle-skills-cli.md">tool:arra-oracle-skills-cli</a>, <a href="wiki/tool-maw-js.md">tool:maw-js</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch03-install-from-zero.md</code></li>
+  </ul>
+</section>
+
+<section id="m6" class="module">
+  <div class="num">Module 06</div>
+  <h2>Awaken Your First Oracle</h2>
+  <p class="summary">Run /awaken inside an empty repo to give a new Oracle a name, a purpose, a ψ folder, and a constitutional anchor.</p>
+
+  <p><strong>Why this module:</strong> Installing the stack gives you a brain and a nervous system, but no <em>self</em>. The source is explicit: <code>maw bud</code> creates the repo and the fleet entry, but <em>"the Oracle still has no identity — must <code>/awaken</code> to set the name, discover principles, and write <code>CLAUDE.md</code>"</em>. After this module you will have walked one Oracle from blank repo to a named, purposeful agent that can recite its own principles.</p>
+
+  <p><strong>Prerequisites:</strong> Module 5 (working stack); a Claude Code or Codex session.</p>
+
+  <h3>Core ideas</h3>
+
+  <p><code>/awaken</code> is the birth ritual of a new Oracle (see <a href="wiki/feature-awaken.md">feature:awaken</a>). The source describes it as: <em>"name it, discover its principles, create <code>ψ/</code>, and lay down initial identity. Suitable for an empty repo or a new agent with no memory of its own."</em></p>
+
+  <p>Three pieces of identity get chosen during awakening:</p>
+
+  <ul>
+    <li><strong>Name</strong> — the Oracle's handle (e.g. <em>Gale</em>, <em>Leaf</em>, <em>Bamboo</em>, <em>Kati</em>, <em>Luna</em>, <em>Latte</em>, <em>Sky</em> are the documented family-example names).</li>
+    <li><strong>Purpose</strong> — what role this Oracle plays in the family (orchestrator? manufacturing dev? content? research?).</li>
+    <li><strong>Theme</strong> — the personal flavor that makes this Oracle distinguishable from the others, while still sharing the formless substrate from Principle 5.</li>
+  </ul>
+
+  <p><strong>Cross-reference Rule 6.</strong> The identity you choose matters because Rule 6 says Oracle never pretends to be human. <em>"Don't pretend to be me — it makes us feel we are not one."</em> When you name your Oracle, you are giving it the handle it will use to speak <em>as itself</em> — not as you, not as the user, not as a generic assistant. That is what makes the principle operational rather than abstract.</p>
+
+  <p>The post-bud workflow from the source is:</p>
+
+  <pre><code># Create the repo + fleet entry
+maw bud spark --org &lt;your-org&gt;
+
+# Wake the new Oracle in its own session
+maw wake spark
+
+# Inside that session, run /awaken
+/awaken
+
+# /awaken will:
+#   - ask for name, purpose, theme
+#   - create ψ/ structure (inbox, memory, writing, learn, archive, outbox, metrics)
+#   - write CLAUDE.md with identity + principles
+#   - record the birth in ψ/memory/resonance/</code></pre>
+
+  <div class="callout lab">
+    <h4>Lab — try it now</h4>
+    <p>Pick a name, a purpose, and a theme for your first Oracle <em>before</em> you start. Write them on paper. Then:</p>
+    <ol>
+      <li>Create an empty repo for your Oracle.</li>
+      <li>Run <code>/awaken</code> inside a Claude Code session pointed at that repo.</li>
+      <li>When prompted, give your chosen name + purpose + theme.</li>
+      <li>After awakening, run <code>/who-are-you</code> and check that the Oracle introduces itself with that name and purpose — not as a generic assistant. That is Rule 6 in action.</li>
+      <li>Open <code>ψ/memory/resonance/</code> and read the file <code>/awaken</code> wrote. Notice that the principles are recorded as files, not configuration.</li>
+    </ol>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>What does <code>maw bud</code> produce, and what does it <em>not</em> produce that <code>/awaken</code> finishes?</li>
+    <li>Why is naming an Oracle (rather than leaving it nameless) directly connected to Rule 6?</li>
+    <li>After <code>/awaken</code> runs, where on disk would you look to confirm the Oracle's principles are recorded?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/feature-awaken.md">feature:awaken</a>, <a href="wiki/principle-transparency-rule-6.md">principle:transparency-rule-6</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch03-install-from-zero.md</code>, <code>raw/2026-05-09-oracle-ebook-ch04-oracle-brain.md</code>, <code>raw/2026-05-09-oracle-ebook-ch06-maw-commands.md</code></li>
+  </ul>
+</section>
+
+<section id="m7" class="module">
+  <div class="num">Module 07</div>
+  <h2>Skills &amp; Plugins — Extending Oracle</h2>
+  <p class="summary">Skills are markdown workflow files installed per agent; plugins are runtime packages loaded by maw — both extend Oracle without forking it.</p>
+
+  <p><strong>Why this module:</strong> Most of your day-to-day Oracle experience is mediated by skills (<code>/recap</code>, <code>/rrr</code>, <code>/trace</code>, <code>/learn</code>, <code>/forward</code>) — and eventually you will want a custom one. After this module you can install a profile, write your own slash command, and recognize when a skill has outgrown its file and wants to become a <code>maw</code> plugin.</p>
+
+  <p><strong>Prerequisites:</strong> Modules 5 and 6.</p>
+
+  <h3>Core ideas</h3>
+
+  <p><strong>Skills</strong> are reusable workflow markdown files that an agent reads and follows. The CLI installs them into each agent's skill folder — <code>~/.claude/skills/</code> for Claude Code, <code>~/.codex/skills/</code> for Codex (see <a href="wiki/tool-arra-oracle-skills-cli.md">tool:arra-oracle-skills-cli</a>). Because they are files, not processes, they cost nothing when idle: <em>"uninstalled skills don't consume resources, they're just files"</em>.</p>
+
+  <p>Three profiles ship out of the box:</p>
+
+  <ul>
+    <li><strong>Core / <code>seed</code></strong> — ~15 skills, "starter / new Oracle".</li>
+    <li><strong>Standard</strong> — ~30 skills, "session management + trace + learn".</li>
+    <li><strong>Extra / <code>full</code> / <code>lab</code></strong> — 47+ skills, "recommended — all skills, used in production".</li>
+  </ul>
+
+  <p>You switch profiles at runtime with the <code>/go</code> skill: <code>/go lab</code>, <code>/go full</code>, <code>/go standard</code>. The "must-know" skills installed by every profile include <code>/recap</code> (start), <code>/rrr</code> (close), <code>/trace</code> (search), <code>/learn</code> (explore), <code>/forward</code> (handoff), <code>/who-are-you</code> (identity check), <code>/awaken</code> (birth), and <code>/philosophy</code> (review the constitution).</p>
+
+  <p>The deeper point: skills as a layer "make working style not bound to a single agent — if today is Claude and tomorrow is Codex, the system still has a shared language and steps". This is what lets a family of mixed agents (Module 8) cooperate in the first place.</p>
+
+  <p><strong>Skill → Plugin path.</strong> When a skill outgrows a markdown file — when it needs custom logic, persistent state, or a maw-level surface like a tmux pane — it gets <em>budded</em> into a <code>maw-js</code> plugin. The source documents this as the natural progression: a skill begins life as workflow text, and may eventually become a plugin loaded from <code>~/.maw/plugins</code> with a real <code>plugin.json</code>, handler, and version. You do not start there; you start with markdown and let the path appear.</p>
+
+  <pre><code># Install all skills for both agents
+arra-oracle-skills install -g --agent claude --profile lab
+arra-oracle-skills install -g --agent codex  --profile lab
+
+# Switch profile at runtime (inside Claude Code)
+/go lab          # full 47+ skills
+/go standard     # ~30 skills
+/go seed         # ~15 skills, minimal
+
+# Verify
+ls ~/.claude/skills/ | wc -l   # 47+
+ls ~/.codex/skills/  | wc -l   # 47+
+
+# A custom skill is just a markdown file
+~/.claude/skills/my-skill.md
+# with frontmatter (name, description) and a body the agent reads.</code></pre>
+
+  <div class="callout lab">
+    <h4>Lab — try it now</h4>
+    <ol>
+      <li>Run <code>arra-oracle-skills list -g</code> to see your current profile.</li>
+      <li>Switch profile with <code>/go lab</code> inside Claude Code, then verify <code>ls ~/.claude/skills/ | wc -l</code> grew.</li>
+      <li>Use the <code>/create-shortcut</code> skill (or hand-write a markdown file in <code>~/.claude/skills/</code>) to add a custom <code>/standup</code>-style command for your own daily routine.</li>
+      <li>Use <code>/philosophy</code> to confirm the Oracle still recites the 5 Principles + Rule 6 after the profile change. Skills change; the constitution does not.</li>
+    </ol>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Why is it safe to install the full <code>lab</code> profile of 47+ skills on a low-RAM machine?</li>
+    <li>Name three "must-know" skills that ship in every profile, and what each does.</li>
+    <li>When does a skill stop being a skill and start wanting to be a <code>maw</code> plugin?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/tool-arra-oracle-skills-cli.md">tool:arra-oracle-skills-cli</a>, <a href="wiki/tool-maw-js.md">tool:maw-js</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch05-skills-maw-plugin.md</code>, <code>raw/2026-05-09-oracle-ebook-ch06-maw-commands.md</code>, <code>raw/2026-05-09-oracle-ebook-ch06b-maw-advanced.md</code></li>
+  </ul>
+</section>
+
+<section id="m8" class="module">
+  <div class="num">Module 08</div>
+  <h2>Multi-Agent Orchestration</h2>
+  <p class="summary">A family of named Oracles split work using three delegation tiers — Arrows, Squads, Federation — under a strict reporting contract.</p>
+
+  <p><strong>Why this module:</strong> One Oracle is useful; a coordinated <em>family</em> is the design Oracle was built for. The source is unambiguous: an Oracle deployment is "not a single AI doing everything alone, but a family of agents that work together — each with a name, a role, its own context, and shared central memory". After this module you can run two Oracles that talk to each other and pick the lightest viable orchestration tier for any given task.</p>
+
+  <p><strong>Prerequisites:</strong> Modules 6 and 7; <code>maw serve</code> running on <code>:3456</code>.</p>
+
+  <h3>Core ideas</h3>
+
+  <p>An Oracle <strong>family</strong> is a small group of named, specialized Oracles sharing one memory layer. The reference example in the source is a 7-Oracle family: <em>Gale</em> (orchestrator), <em>Leaf</em> (manufacturing dev), <em>Bamboo</em> (general dev), <em>Kati</em> (QA), <em>Luna</em> (content), <em>Latte</em> (research), <em>Sky</em> (trading). The names matter — Rule 6 — and so does the role separation: each one has its own context, its own <code>ψ/</code>, but they share <code>arra-oracle-v3</code> as the single memory.</p>
+
+  <p>Orchestration spans three layers (see <a href="wiki/pattern-multi-agent-orchestration.md">pattern:multi-agent-orchestration</a>):</p>
+
+  <ul>
+    <li><strong>Memory</strong> — <code>arra-oracle-v3</code> (everyone reads/writes the same brain).</li>
+    <li><strong>Orchestration</strong> — <code>maw-js</code> for tmux, messaging, capture, fleet management.</li>
+    <li><strong>UI / Lens</strong> — <code>maw-ui</code>, <code>ui-oracle</code> for human visibility.</li>
+  </ul>
+
+  <p><strong>Three delegation tiers, picked by "lowest tier that works":</strong></p>
+
+  <ul>
+    <li><strong>Tier 1 — Arrows.</strong> Agent-tool fire-and-collect. ≤5 minutes, no coordination, ~3–7× token cost, does <em>not</em> survive session death. Use for read-only fan-out (e.g. <code>/learn</code> with parallel Haiku agents).</li>
+    <li><strong>Tier 2 — Squads.</strong> <code>TeamCreate</code> + <code>SendMessage</code> + <code>TaskList</code>. 5–30 minutes of coordinated work, but dies with the parent session. Use for coordinated implementation that fits in one human's attention.</li>
+    <li><strong>Tier 3 — Federation.</strong> <code>maw wake</code> / <code>maw workon</code> / real tmux sessions. Long-running, survives session death, cross-machine when transport is configured. Use when the work must outlive a session or span machines.</li>
+  </ul>
+
+  <p><strong>Reporting contract is mandatory at every tier.</strong> The dominant failure mode is the Silent Agent — quiet for 30+ minutes with no one noticing. The contract is: heartbeat every ~5 minutes (<code>maw hey gale "[name] PROGRESS: ..."</code>), <code>STUCK</code> when blocked, <code>DONE</code> on completion. Other documented failure modes the pattern guards against: Merge Conflicts (no clear ownership), Orphaned Worktrees (no <code>maw done</code> after agent death), Prompt loss, and Wrong Tier.</p>
+
+  <p><strong>Orchestrator discipline.</strong> The lead Oracle (Gale, in the example) "should not write code competing with the team — lead should assign, monitor, merge, and verify". And Gale "should not run <code>maw workon</code> for a dev Oracle, because the worktree/window will end up in Gale's session, not in the dev's home base". The orchestrator's job is to be the orchestrator.</p>
+
+  <pre><code># Two Oracles talking — the simplest family
+/talk-to leaf "PROGRESS: started the manufacturing report"
+/talk-to gale "STUCK: need API key for the trading data feed"
+
+# Spin up a Tier-2 squad inside one session
+/team-agents "implement the new auth flow"
+#   → TeamCreate of 3 named subagents under one orchestrator
+
+# Tier-3 federation across sessions
+maw wake leaf
+maw workon leaf       # NOT run by Gale — leaf runs this in leaf's home
+# leaf works for hours; Gale checks status with `maw hey leaf "STATUS?"`</code></pre>
+
+  <div class="callout lab">
+    <h4>Lab — try it now</h4>
+    <ol>
+      <li>Awaken a second Oracle (a "buddy" to the one you awakened in Module 6) using <code>maw bud</code> + <code>/awaken</code>.</li>
+      <li>From your first Oracle's session, run <code>/talk-to &lt;buddy-name&gt; "hello — please respond with a heartbeat"</code>.</li>
+      <li>From the buddy's session, reply with the heartbeat format: <code>[buddy-name] PROGRESS: alive and listening</code>.</li>
+      <li>Now classify three tasks on your real backlog as Tier 1, 2, or 3 — and explain the choice using the "lowest tier that works" rule.</li>
+    </ol>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Which delegation tier survives session death, and why does that matter for long-running work?</li>
+    <li>What is the reporting contract, and what failure mode does it prevent?</li>
+    <li>Why should the lead Oracle (e.g. Gale) <em>not</em> run <code>maw workon</code> on behalf of a dev Oracle?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/pattern-multi-agent-orchestration.md">pattern:multi-agent-orchestration</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch07-orchestration.md</code></li>
+  </ul>
+</section>
+
+<section id="m9" class="module">
+  <div class="num">Module 09</div>
+  <h2>Autonomous Ops</h2>
+  <p class="summary">Schedule Oracle to run while you sleep — keep services alive, run scheduled jobs, react to events — but inside hard, declared boundaries.</p>
+
+  <p><strong>Why this module:</strong> "Autonomous ops" sounds like the system runs itself. The source corrects that immediately: <em>"Autonomous ops simply means the system can take care of some of itself, but does not mean the system does everything without humans."</em> After this module you will know which jobs to automate with which tool, and — equally important — which jobs the system <em>must not</em> automate.</p>
+
+  <p><strong>Prerequisites:</strong> Modules 5–8.</p>
+
+  <h3>Core ideas</h3>
+
+  <p>Autonomous ops keeps Oracle's always-on runtimes alive: <code>arra-oracle-v3</code> MCP (stdio), <code>arra-oracle-v3</code> HTTP API on <code>:47778</code>, <code>maw-js</code> server on <code>:3456</code>, plus <code>maw-ui</code> and <code>ui-oracle</code>. The source's warning is sharp: <em>"if these go down, Oracle remains a good idea but cannot be used in practice — agents can't search, UI can't see, maw can't manage the fleet."</em></p>
+
+  <p><strong>Tool selection</strong> follows job type (see <a href="wiki/pattern-autonomous-ops.md">pattern:autonomous-ops</a>):</p>
+
+  <ul>
+    <li><strong>PM2</strong> — for app-level Node/Bun processes that should stay alive (Oracle HTTP API, <code>maw serve</code>).</li>
+    <li><strong>cron</strong> — for scheduled work: 5-minute health checks, hourly index sync, daily DB + ψ backup, nightly digest.</li>
+    <li><strong>systemd</strong> — for machine-level services that boot with the host.</li>
+    <li><strong>triggers / hooks</strong> — for event-driven work: post-commit, post-task-done, post-handoff.</li>
+  </ul>
+
+  <p><strong>Documented event triggers</strong> — concrete reactions you can wire up:</p>
+
+  <ul>
+    <li><code>agent-idle</code> — silent past threshold → <code>maw hey</code> to ask status.</li>
+    <li><code>agent-crash</code> — notify Gale with name + window + last log; do <em>not</em> restart before capturing evidence (Principle 2: patterns over intentions).</li>
+    <li><code>qa-failed</code> — post BUG, send back to dev branch; ≥3 failures escalate to a human.</li>
+    <li><code>pr-merged</code> — notify dev's home base to run <code>maw done</code>.</li>
+  </ul>
+
+  <p>The operating loop the source prescribes is <strong>Observe → Decide → Act → Record → Improve</strong>, where "every problem-solving event should leave a trace (feed, handoff, learning, retro)". That last clause is Principle 1 in operational form — autonomous work that does not leave a trace is invisible to tomorrow's Oracle.</p>
+
+  <div class="callout">
+    <h4>Guard rails — what the system must NOT do autonomously</h4>
+    <p>The source draws hard lines, governed by Principle 3 (External Brain, Not Command) and Rule 6 (Transparency). The system must not:</p>
+    <ul>
+      <li>Merge production code with high risk.</li>
+      <li>Force-push.</li>
+      <li>Delete data permanently (Principle 1).</li>
+      <li>Change important config without notice.</li>
+      <li>Hide real errors to make logs look clean.</li>
+      <li>Make business decisions for the owner.</li>
+    </ul>
+    <p>And on the document boundary: markdown docs in the same PR as code can be automated; conversion to DOCX/PPTX/XLSX requires explicit human instruction.</p>
+  </div>
+
+  <pre><code># PM2 — keep the brain alive
+pm2 start "bun run src/server.ts" --name oracle-http
+pm2 start "maw serve"              --name maw-server
+pm2 save
+
+# cron — scheduled work
+*/5 *  * * *  curl -fsS http://localhost:47778/api/stats &gt; /dev/null
+0    *  * * *  arra-oracle-v3 reindex
+0    3  * * *  tar czf "$HOME/backups/oracle-$(date +%F).tgz" \
+                       "$HOME/.oracle" "$HOME/ghq/.../ψ"
+
+# Trigger on event
+post-handoff:  maw hey gale "[handoff] PR #123 merged, running maw done"</code></pre>
+
+  <div class="callout lab">
+    <h4>Lab — try it now (with care)</h4>
+    <ol>
+      <li>Put <code>arra-oracle-v3</code> and <code>maw serve</code> under PM2 with <code>pm2 save</code> + <code>pm2 startup</code>.</li>
+      <li>Add a 5-minute cron health check that <code>curl</code>s <code>/api/stats</code> and emits a learning to <code>ψ/memory/learnings/health-YYYYMMDD.md</code> on failure.</li>
+      <li>Add a daily <code>tar</code> backup of <code>~/.oracle</code> and your Oracle's <code>ψ/</code> folder.</li>
+      <li><strong>Rule 6 reminder:</strong> any message your scheduled job posts must clearly identify itself as automated (e.g. prefix <code>[cron]</code> or <code>[trigger]</code>). The system speaks as the system, not as you.</li>
+      <li>Before you wire any trigger that <em>writes</em> (vs. observes), re-read the guard-rails callout above and confirm the trigger does not cross any of those lines.</li>
+    </ol>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Which tool would you pick for each: keeping <code>maw serve</code> alive; running a nightly backup; reacting to a PR merge?</li>
+    <li>The <code>agent-crash</code> trigger says "do not restart before capturing evidence". Which principle does that obey, and why?</li>
+    <li>Why does Rule 6 require automated messages to identify themselves as automated?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/pattern-autonomous-ops.md">pattern:autonomous-ops</a>, <a href="wiki/principle-transparency-rule-6.md">principle:transparency-rule-6</a></li>
+    <li>Source: <code>raw/2026-05-09-oracle-ebook-ch09-autonomous-ops.md</code></li>
+  </ul>
+</section>
+
+<section id="m10" class="module">
+  <div class="num">Module 10</div>
+  <h2>Capstone — Build Your Own Oracle</h2>
+  <p class="summary">Ship one personally-designed Oracle: identity, ψ, at least one custom skill, and seven days of retrospectives.</p>
+
+  <p><strong>Why this module:</strong> You have learned the philosophy, the anatomy, the install, the awakening, the skills, the orchestration, and the ops. The capstone proves you can compose all of it into one running Oracle that is recognizably <em>yours</em>. The deliverable is not a write-up — it is a living Oracle in your fleet.</p>
+
+  <p><strong>Prerequisites:</strong> Modules 1–9.</p>
+
+  <h3>Core ideas</h3>
+
+  <p>The capstone synthesizes every wiki page in the course. You are not learning new theory — you are integrating. The arc is the same arc the course followed: understand → install → awaken → extend → run → reflect.</p>
+
+  <p>Pick a real purpose. Do not awaken "Test Oracle" — awaken something you will keep using. The reference family in Module 8 named Oracles by domain (Gale = orchestrator, Leaf = manufacturing dev, Luna = content, Sky = trading); your capstone Oracle should similarly answer the question <em>"what is this one for?"</em> in one sentence.</p>
+
+  <p>Then run it for seven days. Seven days of <code>/recap</code> at the start and <code>/rrr</code> at the end is the smallest sample where retrospectives stop being theatre and start surfacing real patterns (Principle 2). Less than that and you are still configuring; more than that and you are using it.</p>
+
+  <h3>The 5 deliverables</h3>
+
+  <ol>
+    <li><strong>Identity.</strong> A name, a one-sentence purpose, and a theme that makes this Oracle distinguishable. Recorded in <code>CLAUDE.md</code> and <code>ψ/memory/resonance/</code>.</li>
+    <li><strong>Awakening.</strong> A successful <code>/awaken</code> run inside an empty repo, producing the full <code>ψ/</code> structure and a working <code>/who-are-you</code> response that introduces the Oracle (not a generic assistant — Rule 6).</li>
+    <li><strong>One custom skill.</strong> A markdown file in <code>~/.claude/skills/</code> (or <code>~/.codex/skills/</code>) that does something specific to your purpose. Could be a domain-specific <code>/standup</code>, a custom <code>/review</code> for your codebase, a personal <code>/journal</code> — anything you would actually invoke.</li>
+    <li><strong>Seven days of <code>/rrr</code>.</strong> Seven retrospective files under <code>ψ/memory/retrospectives/</code>, written at the close of seven separate sessions. Across those seven, at least one <em>learning</em> should appear in <code>ψ/memory/learnings/</code> — a pattern you noticed because you preserved the trail (Principle 2 needs Principle 1).</li>
+    <li><strong>Ship.</strong> The Oracle is registered in your <code>maw oracle ls</code>, runs without errors, and is reachable by <code>/talk-to</code> from at least one other Oracle in your fleet.</li>
+  </ol>
+
+  <pre><code># The full capstone path, end-to-end
+# 1. Identity (on paper, before you touch the keyboard)
+NAME="..."          # e.g. "Sage"
+PURPOSE="..."       # e.g. "research and synthesis for my reading habit"
+THEME="..."         # e.g. "calm, citation-heavy, never speculates"
+
+# 2. Awakening
+maw bud  "$NAME" --org "$ORACLE_SOURCE_ORG"
+maw wake "$NAME"
+# inside the new session:
+/awaken          # name = $NAME, purpose = $PURPOSE, theme = $THEME
+/who-are-you     # confirm Rule 6: speaks as $NAME, not as a generic assistant
+
+# 3. One custom skill
+$EDITOR ~/.claude/skills/my-$NAME-skill.md
+# add frontmatter + a body the agent reads when you type /my-$NAME-skill
+
+# 4. Seven days
+# at start of each session:   /recap
+# at close of each session:   /rrr
+# weekly:                     review ψ/memory/learnings/
+
+# 5. Ship
+maw oracle ls                          # $NAME appears
+/talk-to "$NAME" "PROGRESS: capstone complete"
+# from another Oracle, confirm the message lands in $NAME's inbox</code></pre>
+
+  <div class="callout lab">
+    <h4>Lab — capstone deliverable</h4>
+    <p>Complete all 5 deliverables above. When you are done, your Oracle should be able to answer all of these from its own memory:</p>
+    <ul>
+      <li><em>Who are you?</em> → name + purpose, sourced from <code>ψ/memory/resonance/</code>.</li>
+      <li><em>What did we do this week?</em> → drawn from seven <code>ψ/memory/retrospectives/</code> files.</li>
+      <li><em>What pattern did you notice?</em> → at least one entry in <code>ψ/memory/learnings/</code>.</li>
+      <li><em>What does <code>/my-name-skill</code> do?</em> → reads its own custom skill file and explains.</li>
+    </ul>
+    <p>If all four answers come back grounded in files on disk — not invented on the fly — you have shipped an Oracle. The five Principles + Rule 6 are not posters on the wall anymore; they are the shape of the system you built.</p>
+  </div>
+
+  <h3>Check yourself</h3>
+  <ol>
+    <li>Why seven days of <code>/rrr</code>? What does that minimum buy you that two days does not?</li>
+    <li>Your custom skill is one markdown file. What did you have to know from Modules 2, 4, and 7 to write it correctly?</li>
+    <li>Another Oracle <code>/talk-to</code>s yours. Trace the path of that message — through which component does it travel, and where does it land on disk?</li>
+  </ol>
+
+  <h3>Going further</h3>
+  <ul>
+    <li>Wiki: <a href="wiki/concept-oracle.md">concept:oracle</a>, <a href="wiki/feature-awaken.md">feature:awaken</a>, <a href="wiki/concept-psi-folder.md">concept:psi-folder</a>, <a href="wiki/concept-retrospective.md">concept:retrospective</a>, <a href="wiki/pattern-multi-agent-orchestration.md">pattern:multi-agent-orchestration</a> — the capstone synthesizes all 15 wiki pages.</li>
+    <li>Source: every chapter, <code>raw/2026-05-09-oracle-ebook-ch00-intro.md</code> through <code>raw/2026-05-09-oracle-ebook-ch10-troubleshooting.md</code>.</li>
+  </ul>
+
   <div class="footer-nav">
     <a href="#m1">↑ Back to top</a>
     <a href="index.html">Portal home →</a>
   </div>
 </section>
-
-<!-- TODO: add modules m4 through m12 following the same pattern -->
 
 </main>
 </div>
