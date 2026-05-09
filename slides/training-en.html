@@ -704,13 +704,27 @@ oracle handoff write digest
     letter-spacing: 0.12em; color: #888; margin-bottom: 8px; }
   body.transcript-open .reveal-viewport,
   body.transcript-open .reveal { height: 65vh !important; }
-  @media print { .narration-bar, .transcript-drawer { display: none; } }
+
+  .captions { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    max-width: 78vw; z-index: 999; pointer-events: none;
+    background: rgba(0,0,0,0.86); color: #fff;
+    padding: 14px 24px; border-radius: 10px; text-align: center;
+    font-family: "Inter","Segoe UI",system-ui,sans-serif;
+    font-size: 22px; line-height: 1.4; font-weight: 500;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    opacity: 0; transition: opacity 0.2s ease, bottom 0.25s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+  body.captions-on .captions:not(:empty) { opacity: 1; }
+  body.transcript-open .captions { bottom: calc(35vh + 80px); }
+  @media print { .narration-bar, .transcript-drawer, .captions { display: none; } }
 </style>
 <div class="narration-bar">
   <audio id="slide-audio" controls preload="metadata"></audio>
   <label><input type="checkbox" id="auto-advance" checked /> auto-advance</label>
+  <label><input type="checkbox" id="show-captions" /> captions</label>
   <label><input type="checkbox" id="show-transcript" /> transcript</label>
 </div>
+<div class="captions" id="captions" aria-live="polite"></div>
 <div class="transcript-drawer" id="transcript-drawer" aria-live="polite">
   <div class="label">Transcript — current slide</div>
   <div id="transcript-content"></div>
@@ -721,8 +735,11 @@ oracle handoff write digest
     var audio = document.getElementById("slide-audio");
     var autoCb = document.getElementById("auto-advance");
     var trCb = document.getElementById("show-transcript");
+    var capCb = document.getElementById("show-captions");
     var trContent = document.getElementById("transcript-content");
+    var capBox = document.getElementById("captions");
     var userPaused = false;
+    var timeline = [];  // [{text, start}, ...] sentences with estimated start times
     function pad2(n) { return n < 10 ? "0" + n : "" + n; }
     function slideNum() {
       var i = Reveal.getIndices();
@@ -734,6 +751,8 @@ oracle handoff write digest
       if (audio.src.indexOf(src) === -1) {
         audio.src = src;
         userPaused = false;
+        timeline = [];
+        capBox.textContent = "";
         var p = audio.play();
         if (p && p.catch) p.catch(function () {});
       }
@@ -744,17 +763,49 @@ oracle handoff write digest
       trContent.textContent = note ? note.textContent.trim() : "(no transcript for this slide)";
       trContent.scrollTop = 0;
     }
+    function buildTimeline() {
+      var note = document.querySelector(".present aside.notes")
+              || document.querySelector(".reveal section.present aside.notes");
+      if (!note || !audio.duration || isNaN(audio.duration)) { timeline = []; return; }
+      var text = note.textContent.trim();
+      // Split on sentence terminators followed by whitespace; works for both EN and TH
+      // (we wrote periods explicitly in the rewrites)
+      var sentences = text.split(/(?<=[.!?])\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
+      var totalChars = sentences.reduce(function (n, s) { return n + s.length; }, 0);
+      if (totalChars === 0) { timeline = []; return; }
+      var cum = 0;
+      timeline = sentences.map(function (s) {
+        var start = (cum / totalChars) * audio.duration;
+        cum += s.length;
+        return { text: s, start: start };
+      });
+    }
+    function updateCaption() {
+      if (!timeline.length) return;
+      var t = audio.currentTime, cur = timeline[0].text;
+      for (var i = timeline.length - 1; i >= 0; i--) {
+        if (t >= timeline[i].start) { cur = timeline[i].text; break; }
+      }
+      if (capBox.textContent !== cur) capBox.textContent = cur;
+    }
+    audio.addEventListener("loadedmetadata", buildTimeline);
+    audio.addEventListener("timeupdate", updateCaption);
     audio.addEventListener("pause", function () {
       if (!audio.ended) userPaused = true;
     });
     audio.addEventListener("play", function () { userPaused = false; });
     audio.addEventListener("ended", function () {
+      capBox.textContent = "";
       if (autoCb.checked && !userPaused) Reveal.next();
     });
     trCb.addEventListener("change", function () {
       document.body.classList.toggle("transcript-open", trCb.checked);
       if (trCb.checked) updateTranscript();
       setTimeout(function () { if (window.Reveal) Reveal.layout(); }, 60);
+    });
+    capCb.addEventListener("change", function () {
+      document.body.classList.toggle("captions-on", capCb.checked);
+      if (capCb.checked && !timeline.length) buildTimeline();
     });
     Reveal.on("ready", function () { loadAndPlay(); updateTranscript(); });
     Reveal.on("slidechanged", function () { loadAndPlay(); updateTranscript(); });
