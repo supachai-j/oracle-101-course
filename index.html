@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Oracle 101 — Build your own Oracle — external brain for AI agents</title>
+<meta name="description" content="Build your own Oracle — external brain for AI agents" />
+<meta property="og:title" content="Oracle 101" />
+<meta property="og:description" content="Build your own Oracle — external brain for AI agents" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://supachai-j.github.io/oracle-101-course/" />
+<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#fafbfc" media="(prefers-color-scheme: light)" />
+
+<script>
+  (function() {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root, [data-theme="dark"] {
+    --bg: #0b0d12; --bg-2: #0f1116;
+    --panel: #161922; --panel-2: #1c2030;
+    --accent: #d97757; --accent-glow: rgba(217,119,87,0.35); --accent-on: #1a0f08;
+    --accent-2: #5d8aa8; --accent-3: #6dba88;
+    --muted: #8a93a3; --muted-2: #5d6371;
+    --text: #e8ecf2;
+    --border: rgba(255,255,255,0.06); --border-2: rgba(255,255,255,0.10);
+    --nav-bg: rgba(11,13,18,0.85);
+    --hero-text-1: #ffffff; --hero-text-2: #b8c1d0;
+    --hero-glow-1: rgba(217,119,87,0.18); --hero-glow-2: rgba(93,138,168,0.18);
+    --soft-1: rgba(255,255,255,0.04); --soft-2: rgba(255,255,255,0.06); --soft-3: rgba(255,255,255,0.12);
+  }
+  [data-theme="light"] {
+    --bg: #fafbfc; --bg-2: #ffffff;
+    --panel: #ffffff; --panel-2: #f4f6fa;
+    --accent: #c95a30; --accent-glow: rgba(201,90,48,0.22); --accent-on: #ffffff;
+    --accent-2: #2f6494; --accent-3: #3e8e5e;
+    --muted: #58607a; --muted-2: #7a8298;
+    --text: #1a1d27;
+    --border: rgba(0,0,0,0.08); --border-2: rgba(0,0,0,0.14);
+    --nav-bg: rgba(255,255,255,0.85);
+    --hero-text-1: #1a1d27; --hero-text-2: #4a5165;
+    --hero-glow-1: rgba(201,90,48,0.10); --hero-glow-2: rgba(47,100,148,0.10);
+    --soft-1: rgba(0,0,0,0.03); --soft-2: rgba(0,0,0,0.05); --soft-3: rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter","Noto Sans Thai","Segoe UI",system-ui,sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.6; overflow-x: hidden;
+    transition: background-color .25s ease, color .25s ease;
+  }
+  a { color: var(--accent); text-decoration: none; transition: color .12s ease; }
+  a:hover { text-decoration: underline; }
+  code { font-family: "JetBrains Mono","Menlo",monospace; }
+
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: background-color .25s ease, border-color .25s ease;
+  }
+  nav.top .inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; }
+  nav.top .brand { font-weight: 700; letter-spacing: -0.01em; font-size: 0.95em; }
+  nav.top .brand .dot { color: var(--accent); }
+  nav.top .links { display: flex; gap: 22px; align-items: center; font-size: 0.88em; }
+  nav.top .links a { color: var(--muted); }
+  nav.top .links a:hover { color: var(--text); text-decoration: none; }
+  nav.top .cta {
+    background: var(--accent); color: var(--accent-on) !important;
+    padding: 8px 16px; border-radius: 8px; font-weight: 600;
+  }
+  nav.top .cta:hover { filter: brightness(1.1); text-decoration: none; }
+
+  /* theme toggle */
+  .theme-toggle {
+    background: var(--soft-1); border: 1px solid var(--border);
+    color: var(--muted); width: 34px; height: 34px;
+    border-radius: 8px; display: inline-grid; place-items: center;
+    cursor: pointer; padding: 0;
+    transition: background-color .15s, color .15s, border-color .15s;
+  }
+  .theme-toggle:hover { background: var(--soft-2); color: var(--text); border-color: var(--border-2); }
+  .theme-toggle svg { width: 16px; height: 16px; display: block; }
+  .theme-toggle .icon-moon { display: none; }
+  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+  @media (max-width: 600px) { nav.top .links { gap: 14px; } nav.top .links .hide-sm { display: none; } }
+
+  .hero { position: relative; padding: 96px 24px 80px; text-align: center; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -10% -20% 30% -20%;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 20%, var(--hero-glow-1), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 70% 30%, var(--hero-glow-2), transparent 60%);
+    filter: blur(20px); pointer-events: none; z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(217,119,87,0.12); border: 1px solid rgba(217,119,87,0.3);
+    color: var(--accent); font-size: 0.78em; margin-bottom: 22px;
+  }
+  .hero .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 800; line-height: 1.05; letter-spacing: -0.025em;
+    margin: 0 0 14px;
+    background: linear-gradient(180deg, var(--hero-text-1) 30%, var(--hero-text-2) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(135deg, #d97757 0%, #e89e7a 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .h1-th { font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--muted); font-weight: 500; margin: 0 0 8px; }
+  .hero .lede {
+    max-width: 720px; margin: 24px auto 36px;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--muted); line-height: 1.6;
+  }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 24px; border-radius: 10px;
+    font-weight: 600; font-size: 0.95em; border: 1px solid transparent;
+    transition: transform .12s, background .12s, border-color .12s;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); color: var(--accent-on); box-shadow: 0 8px 30px var(--accent-glow); }
+  .btn.primary:hover { filter: brightness(1.1); }
+  .btn.ghost { background: var(--soft-1); color: var(--text); border-color: var(--border-2); }
+  .btn.ghost:hover { background: var(--soft-2); }
+
+  section.block { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+  .section-label {
+    display: inline-block; color: var(--accent); font-size: 0.78em;
+    letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+  }
+  h2.section-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px; line-height: 1.2; }
+  .section-th { color: var(--muted); font-size: 1.05em; margin: 0 0 32px; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feature {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px;
+    transition: border-color .15s, transform .15s;
+  }
+  .feature:hover { border-color: rgba(217,119,87,0.3); transform: translateY(-2px); }
+  .feature .ico {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: linear-gradient(135deg, rgba(217,119,87,0.18), rgba(93,138,168,0.18));
+    border: 1px solid var(--border-2);
+    display: grid; place-items: center; font-size: 1.3em; margin-bottom: 16px;
+  }
+  .feature h3 { margin: 0 0 8px; font-size: 1.1rem; font-weight: 600; }
+  .feature p { margin: 0; color: var(--muted); font-size: 0.95em; line-height: 1.55; }
+  @media (max-width: 900px) { .features { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+
+  .start-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .start-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 26px 24px; color: var(--text); text-decoration: none;
+    transition: transform .15s, border-color .15s, background .15s; display: block;
+  }
+  .start-card:hover { transform: translateY(-2px); background: var(--panel-2); border-color: rgba(217,119,87,0.3); text-decoration: none; }
+  .start-card .lang { display: inline-block; background: rgba(217,119,87,0.15); color: var(--accent);
+    font-size: 0.7em; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; letter-spacing: 0.04em; font-weight: 600; }
+  .start-card .lang.alt { background: rgba(93,138,168,0.15); color: var(--accent-2); }
+  .start-card h3 { margin: 4px 0 4px; font-size: 1.15em; font-weight: 600; }
+  .start-card p { margin: 0; color: var(--muted); font-size: 0.92em; line-height: 1.55; }
+  .start-card .arrow { color: var(--accent); margin-top: 14px; font-size: 0.88em; }
+  @media (max-width: 720px) { .start-grid { grid-template-columns: 1fr; } }
+
+  .final-cta { text-align: center; padding: 80px 24px;
+    background: linear-gradient(180deg, transparent 0%, rgba(217,119,87,0.04) 100%);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .final-cta h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 12px; font-weight: 700; letter-spacing: -0.02em; }
+  .final-cta p { color: var(--muted); margin: 0 0 32px; font-size: 1.05em; }
+  .final-cta .ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  footer { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px;
+    color: var(--muted); font-size: 0.88em;
+    display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
+  footer .links { display: flex; gap: 22px; flex-wrap: wrap; }
+  footer .links a { color: var(--muted); }
+  footer .links a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <div class="brand">Oracle 101 <span class="dot">·</span> Training</div>
+    <div class="links">
+      <a href="#what" class="hide-sm">What you'll learn</a>
+      <a href="#start">Start</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+          <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+          <path d="M2 12h2"/><path d="M20 12h2"/>
+          <path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a href="course-en.html" class="cta">Begin →</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge"><span class="dot"></span> Build your own Oracle — external brain for AI agents</div>
+  <p class="h1-th">Oracle 101 ภาษาไทย</p>
+  <h1>Oracle 101</h1>
+  <p class="lede">Build your own Oracle — external brain for AI agents<br/><span style="color:var(--muted-2)">สร้าง Oracle ของตัวเอง — ระบบสมองภายนอกสำหรับ AI agent</span></p>
+  <div class="ctas">
+    <a class="btn primary" href="course-en.html">Start course (EN) <span>→</span></a>
+    <a class="btn ghost" href="course-th.html">เริ่มหลักสูตร (TH)</a>
+    <a class="btn ghost" href="slides/training-en.html">Slides (EN)</a>
+    <a class="btn ghost" href="slides/training-th.html">สไลด์ (TH)</a>
+  </div>
+</section>
+
+<section class="block" id="what">
+  <span class="section-label">What you'll learn</span>
+  <h2 class="section-title">Pillars of this training</h2>
+  <p class="section-th">หลักการสำคัญของหลักสูตร</p>
+  <div class="features">
+    <!-- TODO: replace these with your actual pillars -->
+    <div class="feature">
+      <div class="ico">📐</div>
+      <h3>Pillar one</h3>
+      <p>Short description of the first thing learners will master.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🪜</div>
+      <h3>Pillar two</h3>
+      <p>Short description of the second thing learners will master.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🌐</div>
+      <h3>Pillar three</h3>
+      <p>Short description of the third thing learners will master.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🧭</div>
+      <h3>Pillar four</h3>
+      <p>Short description of the fourth thing learners will master.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🎯</div>
+      <h3>Pillar five</h3>
+      <p>Short description of the fifth thing learners will master.</p>
+    </div>
+    <div class="feature">
+      <div class="ico">🛡️</div>
+      <h3>Pillar six</h3>
+      <p>Short description of the sixth thing learners will master.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="start">
+  <span class="section-label">Get started</span>
+  <h2 class="section-title">Pick your format</h2>
+  <p class="section-th">เลือกฟอร์แมตที่เหมาะกับคุณ</p>
+  <div class="start-grid">
+    <a class="start-card" href="course-en.html">
+      <span class="lang">EN · self-paced</span>
+      <h3>Self-paced course (English)</h3>
+      <p>Read at your own pace. Sticky-sidebar TOC, citation-backed claims.</p>
+      <div class="arrow">Start reading →</div>
+    </a>
+    <a class="start-card" href="course-th.html">
+      <span class="lang alt">TH · อ่านเอง</span>
+      <h3>หลักสูตรอ่านเอง (ภาษาไทย)</h3>
+      <p>อ่านได้ตามจังหวะของคุณเอง · TOC ติดด้านข้าง · มี citation ครบ</p>
+      <div class="arrow">เริ่มอ่าน →</div>
+    </a>
+    <a class="start-card" href="slides/training-en.html">
+      <span class="lang">EN deck</span>
+      <h3>Slides — instructor-led (English)</h3>
+      <p>Reveal.js deck for live training sessions. Same outline, condensed for ~60-90 min.</p>
+      <div class="arrow">Open slides →</div>
+    </a>
+    <a class="start-card" href="slides/training-th.html">
+      <span class="lang alt">TH deck</span>
+      <h3>สไลด์สำหรับสอนสด (ภาษาไทย)</h3>
+      <p>สไลด์ reveal.js สำหรับสอนสด โครงเดียวกับ EN ย่นเนื้อหาให้กระชับสำหรับ 60-90 นาที</p>
+      <div class="arrow">เปิดสไลด์ →</div>
+    </a>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Ready to dive in?</h2>
+  <p>Open in your browser · No signup · No setup</p>
+  <div class="ctas">
+    <a class="btn primary" href="course-en.html">Begin in English →</a>
+    <a class="btn ghost" href="course-th.html">เริ่มภาษาไทย</a>
+  </div>
+</section>
+
+<footer>
+  <div class="links">
+    <a href="course-en.html">Course (EN)</a>
+    <a href="course-th.html">Course (TH)</a>
+    <a href="slides/training-en.html">Slides (EN)</a>
+    <a href="slides/training-th.html">Slides (TH)</a>
+    <a href="wiki-index.md">Wiki</a>
+    <a href="https://github.com/supachai-j/oracle-101-course">GitHub ↗</a>
+  </div>
+  <div>Oracle 101 · by Supachai Jaturaprom</div>
+</footer>
+
+<script>
+  (function() {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var current = document.documentElement.dataset.theme || 'dark';
+      var next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+    var mq = window.matchMedia('(prefers-color-scheme: light)');
+    if (mq.addEventListener) {
+      mq.addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.dataset.theme = e.matches ? 'light' : 'dark';
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

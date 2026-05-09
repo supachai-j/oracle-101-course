@@ -1,0 +1,8 @@
+.DS_Store
+.obsidian/
+*.swp
+*.swo
+*.bak
+.idea/
+.vscode/
+node_modules/

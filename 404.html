@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Not found — Oracle 101</title>
+<meta name="theme-color" content="#0f1116" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#fafbfc" media="(prefers-color-scheme: light)" />
+<script>
+  (function() {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+  })();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root, [data-theme="dark"] {
+    --bg: #0f1116; --text: #e8ecf2; --muted: #8a93a3; --accent: #d97757;
+    --border: rgba(255,255,255,0.06); --soft-1: rgba(255,255,255,0.04);
+  }
+  [data-theme="light"] {
+    --bg: #fafbfc; --text: #1a1d27; --muted: #58607a; --accent: #c95a30;
+    --border: rgba(0,0,0,0.08); --soft-1: rgba(0,0,0,0.03);
+  }
+  html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--text);
+    font-family: "Inter","Noto Sans Thai",system-ui,sans-serif;
+    transition: background-color .25s ease, color .25s ease; }
+  body { display: grid; place-items: center; padding: 24px; }
+  .card { max-width: 540px; text-align: center; }
+  h1 { font-size: 4rem; margin: 0 0 8px; color: var(--accent); letter-spacing: -0.02em; }
+  h2 { font-size: 1.4rem; font-weight: 500; margin: 0 0 18px; }
+  p { color: var(--muted); line-height: 1.55; margin: 6px 0; }
+  .pill { display: inline-block; padding: 4px 14px; border-radius: 999px;
+    background: rgba(217,119,87,0.15); color: var(--accent); font-size: 0.78em;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .links { margin-top: 28px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .links a { display: inline-block; padding: 10px 20px; border-radius: 8px;
+    background: rgba(217,119,87,0.12); color: var(--accent); text-decoration: none;
+    border: 1px solid rgba(217,119,87,0.3); font-weight: 500; }
+  .links a:hover { background: rgba(217,119,87,0.22); }
+  .theme-toggle { position: fixed; top: 18px; right: 18px;
+    background: var(--soft-1); border: 1px solid var(--border);
+    color: var(--muted); width: 34px; height: 34px;
+    border-radius: 8px; display: inline-grid; place-items: center;
+    cursor: pointer; padding: 0; }
+  .theme-toggle:hover { color: var(--text); }
+  .theme-toggle svg { width: 16px; height: 16px; display: block; }
+  .theme-toggle .icon-moon { display: none; }
+  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/>
+    <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+    <path d="M2 12h2"/><path d="M20 12h2"/>
+    <path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+<div class="card">
+  <span class="pill">404 · Not Found</span>
+  <h1>404</h1>
+  <h2>Page not found · ไม่พบหน้าที่ค้นหา</h2>
+  <p>The page you're looking for has moved or doesn't exist.</p>
+  <p>หน้าที่คุณค้นหาอาจถูกย้ายหรือไม่มีอยู่</p>
+  <div class="links">
+    <a href="/">← Portal home</a>
+    <a href="/course-en.html">Course (EN)</a>
+    <a href="/course-th.html">หลักสูตร (TH)</a>
+  </div>
+</div>
+<script>
+  (function() {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var current = document.documentElement.dataset.theme || 'dark';
+      var next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
