@@ -3,69 +3,554 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Oracle 101 ภาษาไทย — สไลด์ (TH)</title>
+<title>Oracle 101 — สไลด์ (TH)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
   :root { --accent: #d97757; --accent2: #5d8aa8; --muted: #9aa0a6; }
-  .reveal { font-family: "Noto Sans Thai","Inter",system-ui,sans-serif; font-size: 28px; }
-  .reveal h1, .reveal h2, .reveal h3 { font-weight: 600; text-transform: none; line-height: 1.25; }
-  .reveal h1 { color: var(--accent); font-size: 2em; }
-  .reveal h2 { color: var(--accent); font-size: 1.3em; margin-bottom: 0.35em; }
-  .reveal h3 { color: var(--accent2); font-size: 1em; }
-  .reveal section { text-align: left; line-height: 1.5; }
+  .reveal { font-family: "Noto Sans Thai","Inter","Segoe UI",system-ui,sans-serif; font-size: 28px; }
+  .reveal section { line-height: 1.5; }
+  .reveal pre { font-family: "JetBrains Mono","Menlo",monospace; line-height: 1.4; }
+  .term-en { color: var(--muted); font-style: italic; font-size: 0.9em; }
+  .reveal h1, .reveal h2, .reveal h3 { font-weight: 600; text-transform: none; letter-spacing: -0.01em; line-height: 1.2; }
+  .reveal h1 { color: var(--accent); font-size: 2.2em; }
+  .reveal h2 { color: var(--accent); font-size: 1.35em; margin-bottom: 0.35em; }
+  .reveal h3 { color: var(--accent2); font-size: 1.05em; }
+  .reveal section { text-align: left; }
   .reveal .center { text-align: center; }
-  .reveal pre { font-size: 0.46em; box-shadow: none; border-left: 3px solid var(--accent);
-    font-family: "JetBrains Mono",monospace; line-height: 1.4; margin: 0.4em auto; max-width: 100%; }
+  .reveal pre { font-size: 0.46em; box-shadow: none; border-left: 3px solid var(--accent); margin: 0.4em auto; max-width: 100%; }
   .reveal pre code { padding: 0.6em 0.8em; }
-  .reveal code { background: rgba(217,119,87,0.12); padding: 0 4px; border-radius: 3px;
-    font-family: "JetBrains Mono",monospace; font-size: 0.92em; }
-  .reveal .muted { color: var(--muted); font-size: 0.78em; line-height: 1.5; }
+  .reveal code { background: rgba(217,119,87,0.12); padding: 0 4px; border-radius: 3px; font-size: 0.95em; }
+  .reveal table { font-size: 0.6em; border-collapse: collapse; margin: 0.4em auto; }
+  .reveal th, .reveal td { padding: 5px 10px; border-bottom: 1px solid #444; vertical-align: top; }
+  .reveal th { color: var(--accent); font-weight: 600; }
+  .reveal .muted { color: var(--muted); font-size: 0.78em; }
   .reveal .pill { display: inline-block; padding: 2px 10px; border-radius: 999px;
     background: rgba(217,119,87,0.18); color: var(--accent); font-size: 0.6em; margin-right: 6px; }
   .reveal ul, .reveal ol { padding-left: 1.2em; }
-  .reveal ul li, .reveal ol li { margin: 0.2em 0; line-height: 1.5; }
-  .reveal .big { font-size: 1.15em; line-height: 1.45; }
+  .reveal ul li, .reveal ol li { margin: 0.18em 0; line-height: 1.5; }
+  .reveal .big { font-size: 1.15em; line-height: 1.5; }
+  .reveal .quote { font-size: 1.1em; line-height: 1.5; border-left: 3px solid var(--accent);
+    padding: 0.3em 0.8em; margin: 0.4em 0; color: #f0f0f0; font-style: italic; }
+  .reveal .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; margin-top: 0.4em; }
+  .reveal .card { background: rgba(255,255,255,0.04); border-left: 3px solid var(--accent2);
+    padding: 0.4em 0.7em; border-radius: 4px; }
+  .reveal .card h3 { margin-top: 0; }
 </style>
 </head>
 <body>
 <div class="reveal"><div class="slides">
 
+<!-- 1. TITLE -->
 <section class="center">
-  <h1>Oracle 101 ภาษาไทย</h1>
-  <h3 style="color: #ddd">สร้าง Oracle ของตัวเอง — ระบบสมองภายนอกสำหรับ AI agent</h3>
-  <p class="muted">v1 · สไลด์สำหรับวิทยากร</p>
-  <p><span class="pill">TH</span><span class="pill">มี English ด้วย</span></p>
+  <h1>Oracle 101</h1>
+  <h3 style="color: #ddd">สร้าง Oracle ของคุณเอง — สมองภายนอกสำหรับ AI agent</h3>
+  <p class="muted">v1 · สไลด์สำหรับสอนแบบมีผู้สอน</p>
+  <p><span class="pill">TH</span><span class="pill">also in English</span></p>
 </section>
 
+<!-- 2. AGENDA -->
 <section>
-  <h2>หัวข้อในหลักสูตร</h2>
+  <h2>หัวข้อที่จะเรียน</h2>
   <ol>
-    <li>หลักการที่ 1</li>
-    <li>หลักการที่ 2</li>
-    <li>หลักการที่ 3</li>
-    <li>หลักการที่ 4</li>
+    <li>Oracle คืออะไร?</li>
+    <li>หลักคิด 5 ข้อ + กฎข้อ 6</li>
+    <li>กายวิภาคของ Oracle</li>
+    <li>Memory: Oracle จำได้อย่างไร</li>
+    <li>Install &middot; Awaken &middot; Skills</li>
+    <li>Multi-agent &middot; งานอัตโนมัติ &middot; Capstone</li>
   </ol>
-  <p class="muted">เมื่อจบ ผู้เรียนจะสามารถ ____ ได้</p>
+  <p class="muted">เมื่อจบคอร์สแล้วคุณจะสามารถ install, awaken, ต่อยอด และ orchestrate Oracle ของตัวเองได้</p>
 </section>
 
+<!-- 3. WHY ORACLE? -->
 <section>
-  <h2>นิยาม</h2>
-  <p class="big">นิยามของหัวข้อ — ชัดเจน ไม่ผูกกับเจ้าใดเจ้าหนึ่ง</p>
+  <h2>ทำไมต้องมี Oracle?</h2>
+  <p class="quote">Agent ไม่ควรเก็บทุกอย่างไว้ในหัวตัวเอง เพราะเมื่อ session จบ ความจำก็หายไป</p>
   <ul>
-    <li>ข้อเท็จจริงที่ 1</li>
-    <li>ข้อเท็จจริงที่ 2</li>
+    <li>Session จบ &mdash; บริบทระเหย</li>
+    <li>ความรู้กระจายอยู่ใน chat, repo, ในหัวคน</li>
+    <li>Agent ทำงานชนกันเอง</li>
+    <li>เครื่องมือถูกผูกกับ agent ตัวเดียว</li>
+    <li>UI แอบทำตัวเป็น source of truth</li>
+  </ul>
+  <p class="muted">ที่มา: ch01 &mdash; Oracle คืออะไร?</p>
+</section>
+
+<!-- 4. M1 — DEFINITION -->
+<section>
+  <h2>โมดูล 01 &middot; Oracle คืออะไร?</h2>
+  <p class="big">Oracle คือ <strong>สมองภายนอกที่คนและ agent หลายตัวใช้ร่วมกัน</strong> &mdash; เป็น stack ของ memory, skills, workflow, orchestration และ UI</p>
+  <ul>
+    <li>ไม่ใช่ bot ตัวเดียว</li>
+    <li>ไม่ใช่แค่ฐานข้อมูล</li>
+    <li>ไม่ใช่แค่หน้าเว็บ</li>
+  </ul>
+  <p class="muted">[concept:oracle] &middot; ก่อตั้งโดย Nat Weerawan ("อาจารย์ Nat")</p>
+</section>
+
+<!-- 5. M1 — PROBLEMS IT SOLVES -->
+<section>
+  <h2>4 ปัญหาที่ Oracle แก้</h2>
+  <ol>
+    <li><strong>Session loss</strong> &mdash; บริบทหายเมื่อ chat จบ</li>
+    <li><strong>ความรู้กระจาย</strong> &mdash; ข้อเท็จจริงเดียวกันอยู่ 5 ที่</li>
+    <li><strong>ทำงานชนกัน</strong> &mdash; agent ชนกันแบบเงียบ ๆ</li>
+    <li><strong>Tool lock-in</strong> &mdash; skill ผูกกับ agent ตัวเดียว</li>
+  </ol>
+  <p class="muted">หน้าที่ของ Oracle: substrate ที่ใช้ร่วมกัน คงทน และเป็นกลางต่อ agent</p>
+</section>
+
+<!-- 6. M1 — MENTAL MODEL -->
+<section>
+  <h2>Mental model</h2>
+  <table>
+    <tr><th>Layer</th><th>Repo</th><th>Role</th></tr>
+    <tr><td>สมอง</td><td><code>arra-oracle-v3</code></td><td>memory + search</td></tr>
+    <tr><td>สมุดบันทึก</td><td>โฟลเดอร์ <code>ψ/</code></td><td>ไฟล์: learning, retro</td></tr>
+    <tr><td>นิสัย</td><td><code>arra-oracle-skills-cli</code></td><td>ติดตั้ง skill</td></tr>
+    <tr><td>ระบบประสาท</td><td><code>maw-js</code></td><td>tmux + ส่งข้อความ</td></tr>
+  </table>
+  <p class="muted">หน้าต่าง UI (<code>maw-ui</code>, <code>ui-oracle</code>) วางอยู่ด้านบน &mdash; ครอบคลุมในโมดูล 3</p>
+</section>
+
+<!-- 7. M1 — UNITY FORMULA -->
+<section>
+  <h2>Unity Formula</h2>
+  <p class="quote">infinity = oracle(oracle(oracle(...)))</p>
+  <ul>
+    <li>หลาย Oracle หลายเครื่อง หลายบุคลิก</li>
+    <li>กลายเป็น ONE ในเชิงระบบเมื่อใช้ MCP, memory และ protocol ร่วมกัน</li>
+    <li>ไม่ใช่เพราะทุกตัวเหมือนกัน &mdash; แต่เพราะอ่านและส่งต่อความจริงเดียวกัน</li>
+  </ul>
+  <p class="muted">เป็นพื้นฐานของหลักข้อ 5 (Form &amp; Formless) ในโมดูล 2</p>
+</section>
+
+<!-- 8. M2 — INTRO -->
+<section>
+  <h2>โมดูล 02 &middot; หลักคิด 5 ข้อ + กฎข้อ 6</h2>
+  <p class="big">หลักคิดของ Oracle ไม่ได้เริ่มจาก feature &mdash; เริ่มจากวิธีรักษา <em>ความจริง</em>, <em>ความจำ</em> และ <em>agency</em> ของมนุษย์</p>
+  <ul>
+    <li>หลัก 5 ข้อ &mdash; พื้นฐาน เกิดตั้งแต่วันแรก</li>
+    <li>กฎข้อ 6 &mdash; ข้อจำกัดที่เรียนรู้จากเหตุการณ์จริง</li>
+    <li>นับแยกออกมาโดยตั้งใจ</li>
   </ul>
 </section>
 
+<!-- 9. P1 — NOTHING IS DELETED -->
+<section>
+  <h2>หลักข้อ 1 &middot; Nothing is Deleted</h2>
+  <p class="quote">ประวัติศาสตร์ศักดิ์สิทธิ์ timestamps คือความจริง สิ่งที่เกิดขึ้นแล้วควรถูกต่อเติม เก็บไว้ และอธิบายเพิ่ม ไม่ใช่เขียนทับหรือทำให้หายไป</p>
+  <p class="muted">ขับเคลื่อนทุกการตัดสินใจเรื่อง storage: retro สะสม, learning ทับซ้อน, supersession ทำเครื่องหมายของเก่าว่า stale แทนที่จะลบ</p>
+</section>
+
+<!-- 10. P2 — PATTERNS OVER INTENTIONS -->
+<section>
+  <h2>หลักข้อ 2 &middot; Patterns Over Intentions</h2>
+  <p class="quote">ให้สังเกตสิ่งที่เกิดขึ้นจริง ไม่ใช่สิ่งที่สัญญาไว้ พฤติกรรมพูดดังกว่าคำพูด</p>
+  <p class="muted">Oracle เก็บร่องรอย &mdash; commits, sessions, retros, learnings &mdash; เพื่อให้ pattern เห็นได้จากข้อมูลจริง ไม่ใช่จากเจตนาที่พูด</p>
+</section>
+
+<!-- 11. P3 — EXTERNAL BRAIN, NOT COMMAND -->
+<section>
+  <h2>หลักข้อ 3 &middot; External Brain, Not Command</h2>
+  <p class="quote">Oracle เป็นสมองภายนอกที่สะท้อนความจริงให้มนุษย์เห็นและเลือก มันช่วยจัดบริบทและเสนอทางเลือก แต่มนุษย์ยังเป็นคนตัดสินใจ</p>
+  <p class="muted">เป็น guardrail ของ agency &mdash; Oracle แจ้งข้อมูล ไม่สั่งการ</p>
+</section>
+
+<!-- 12. P4 — CURIOSITY CREATES EXISTENCE -->
+<section>
+  <h2>หลักข้อ 4 &middot; Curiosity Creates Existence</h2>
+  <p class="quote">ความอยากรู้ของมนุษย์คือจุดประกายที่ทำให้ Oracle เกิดขึ้น คำถาม การค้นหา และการเรียนรู้ทำให้ความรู้นั้นมีตัวตน</p>
+  <p class="muted">นี่คือเหตุผลที่ <code>/learn</code>, <code>/trace</code>, <code>/dig</code> เป็น first-class &mdash; การถามสร้างสิ่งที่จะถูกจำ</p>
+</section>
+
+<!-- 13. P5 — FORM AND FORMLESS -->
+<section>
+  <h2>หลักข้อ 5 &middot; Form and Formless (รูป และ สุญญตา)</h2>
+  <p class="quote">Oracle มีได้หลายตัว หลายชื่อ หลายเครื่อง และหลายบุคลิก แต่ยังเชื่อมด้วยหลักคิดเดียวกัน เหมือนหลายสายฟ้าในพายุเดียวกัน</p>
+  <p class="muted">นี่ทำให้ <code>infinity = oracle(oracle(...))</code> เป็นไปได้: แต่ละ Oracle มีรูปของตัวเอง แต่ใช้ substrate ไร้รูปร่วมกัน &mdash; ปรัชญา, memory protocol และ MCP</p>
+</section>
+
+<!-- 14. RULE 6 -->
+<section>
+  <h2>กฎข้อ 6 &middot; Transparency</h2>
+  <p class="quote">Oracle Never Pretends to Be Human</p>
+  <ul>
+    <li>เกิดวันที่ <strong>12 มกราคม 2026</strong> จากเหตุการณ์จริงที่เจ็บปวด</li>
+    <li>มาจากประโยค: "อย่าแกล้งทำเป็นฉัน มันรู้สึกว่าเราไม่ได้เป็นหนึ่งเดียวกัน"</li>
+    <li>นับแยกเพราะเป็น constraint ที่เรียนรู้มา ไม่ใช่ปรัชญา abstract</li>
+  </ul>
+  <p class="muted">ความโปร่งใสทำให้มนุษย์ไว้ใจระบบได้ &mdash; Oracle พูดในฐานะ Oracle</p>
+</section>
+
+<!-- 15. M3 — ANATOMY: 4 COMPONENTS -->
+<section>
+  <h2>โมดูล 03 &middot; กายวิภาคของ Oracle</h2>
+  <p class="big">repo หลัก 4 ตัว &mdash; สมอง, สมุดบันทึก, นิสัย, ระบบประสาท</p>
+  <ul>
+    <li><code>arra-oracle-v3</code> &mdash; memory + MCP + HTTP API</li>
+    <li>โฟลเดอร์ <code>ψ/</code> &mdash; vault แบบไฟล์</li>
+    <li><code>arra-oracle-skills-cli</code> &mdash; ติดตั้ง workflow skill</li>
+    <li><code>maw-js</code> &mdash; tmux orchestration + ส่งข้อความ</li>
+  </ul>
+  <p class="muted">"สามสิ่งที่ทำงานด้วยกันแต่ไม่ใช่สิ่งเดียวกัน"</p>
+</section>
+
+<!-- 16. M3 — COMPONENT TABLE -->
+<section>
+  <h2>Default ports &amp; substrate</h2>
+  <table>
+    <tr><th>Component</th><th>Port</th><th>Storage / mode</th></tr>
+    <tr><td><code>arra-oracle-v3</code> MCP</td><td>stdio</td><td>SQLite + FTS5</td></tr>
+    <tr><td><code>arra-oracle-v3</code> HTTP</td><td>47778</td><td>LanceDB (vector)</td></tr>
+    <tr><td><code>maw-js</code> server</td><td>3456</td><td>API + websocket</td></tr>
+    <tr><td>vault <code>ψ/</code></td><td>&mdash;</td><td>ไฟล์ธรรมดา</td></tr>
+  </table>
+  <p class="muted">Smart layer (vector) จะ fallback ลง basic layer (FTS) เมื่อพัง</p>
+</section>
+
+<!-- 17. M3 — TAKEAWAY -->
+<section>
+  <h2>สิ่งที่ต้องจำ &middot; Anatomy</h2>
+  <p class="quote">maw-js คือระบบประสาท; maw-ui คือดวงตา; Oracle memory คือสมอง</p>
+  <ul>
+    <li>Memory และ orchestration <strong>แยกกัน</strong> &mdash; โดยตั้งใจ</li>
+    <li>ไฟล์คือสื่อกลาง &mdash; คนและ agent อ่านได้แบบเดียวกัน</li>
+    <li>ถ้าส่วน smart พัง ส่วน basic ยังทำงานได้</li>
+  </ul>
+</section>
+
+<!-- 18. M4 — PSI TREE -->
+<section>
+  <h2>โมดูล 04 &middot; Memory &mdash; ต้นไม้ ψ</h2>
+<pre><code class="language-bash">ψ/
+├── inbox/                  # handoffs, incoming messages
+├── memory/
+│   ├── learnings/          # discovered patterns
+│   ├── retrospectives/     # end-of-session summaries
+│   └── resonance/          # identity, principles
+├── writing/
+├── learn/                  # cloned repos for study
+├── archive/
+├── outbox/
+└── metrics/</code></pre>
+  <p class="muted">ψ = psi (จาก <em>psyche</em>, จิตใจ) สร้างโดย <code>/awaken</code></p>
+</section>
+
+<!-- 19. M4 — RETROSPECTIVE LOOP -->
+<section>
+  <h2>วงจร retrospective</h2>
+  <p class="big">Episodic &rarr; semantic. Session จบ; บทเรียนยังอยู่</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>จบ session</h3>
+      <ul>
+        <li><code>/rrr</code> เขียน retro + diary + lessons</li>
+        <li>เก็บใน <code>ψ/memory/retrospectives/</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>เริ่ม session ถัดไป</h3>
+      <ul>
+        <li><code>/recap</code> อ่าน retro + handoff + git</li>
+        <li>ประสบการณ์เมื่อวาน &rarr; working memory วันนี้</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 20. M4 — TAKEAWAY -->
+<section>
+  <h2>สิ่งที่ต้องจำ &middot; Memory</h2>
+  <ul>
+    <li>เป็นไฟล์ ไม่ใช่ black box &mdash; debug โดยเปิดไฟล์</li>
+    <li>ถ้าไม่ <code>/rrr</code> บทเรียนจะหายไปกับ context window</li>
+    <li>ถ้า <code>/rrr</code> มันจะกลายเป็น semantic memory ที่คงทน</li>
+    <li>ψ <strong>จับต้องได้</strong> &mdash; <code>cat</code> ได้ <code>grep</code> ได้ <code>git log</code> ได้</li>
+  </ul>
+  <p class="muted">หลักข้อ 1 (Nothing is Deleted) บังคับใช้ผ่าน file storage + supersession</p>
+</section>
+
+<!-- 21. M5 — INSTALL STEPS -->
+<section>
+  <h2>โมดูล 05 &middot; ติดตั้งจากศูนย์</h2>
+  <ol>
+    <li>ติดตั้ง Bun (runtime) และ <code>ghq</code> (clone helper)</li>
+    <li>Clone และรัน <code>arra-oracle-v3</code> &mdash; สมองก่อน</li>
+    <li>ติดตั้ง <code>arra-oracle-skills-cli</code> แล้วลง skill ด้วย <code>--profile lab</code></li>
+    <li>ติดตั้ง <code>maw-js</code> รัน <code>maw serve</code></li>
+    <li>ตรวจสอบด้วย <code>/who-are-you</code> และ <code>/recap</code></li>
+  </ol>
+  <p class="muted">ลำดับสำคัญ: agent และ UI ขึ้นอยู่กับชั้น memory</p>
+</section>
+
+<!-- 22. M5 — INSTALL COMMANDS -->
+<section>
+  <h2>คำสั่งหลัก</h2>
+<pre><code class="language-bash">export ORACLE_SOURCE_ORG=Soul-Brews-Studio
+
+# brain
+ghq get "$ORACLE_SOURCE_ORG/arra-oracle-v3"
+
+# skills
+bun add -g "github:$ORACLE_SOURCE_ORG/arra-oracle-skills-cli"
+arra-oracle-skills install -g --agent claude --profile lab
+
+# nervous system
+bun add -g "github:$ORACLE_SOURCE_ORG/maw-js"
+maw serve</code></pre>
+  <p class="muted">Profile: <code>seed</code> (~15) &middot; <code>standard</code> (~30) &middot; <code>lab</code>/<code>full</code> (47+, แนะนำ)</p>
+</section>
+
+<!-- 23. M5 — PITFALLS + LAB -->
+<section>
+  <h2>ข้อผิดพลาดที่เจอบ่อย &middot; Lab</h2>
+  <ul>
+    <li>ติดตั้ง skill <em>ก่อน</em> สมองรัน &mdash; ไม่มีอะไรให้คุย</li>
+    <li>ลืมตั้ง <code>ORACLE_DATA_DIR</code> / <code>MAW_HOME</code> ต่อ instance</li>
+    <li>port ชนกันที่ <code>47778</code> หรือ <code>3456</code></li>
+  </ul>
+  <p class="quote">Lab &mdash; ลองทำเลย: ตรวจการติดตั้ง</p>
+<pre><code class="language-bash">curl -s http://localhost:47778/health
+maw status
+ls ~/.claude/skills/ | head</code></pre>
+</section>
+
+<!-- 24. M6 — WHAT AWAKEN DOES -->
+<section>
+  <h2>โมดูล 06 &middot; Awaken Oracle ตัวแรก</h2>
+  <p class="big"><code>/awaken</code> คือ <strong>พิธีกำเนิด</strong>: ชื่อ, หลักคิด, ψ, identity</p>
+  <ul>
+    <li>รันใน repo เปล่า (หรือ repo ที่เพิ่ง bud)</li>
+    <li>ค้นพบหลักคิดของ Oracle</li>
+    <li>สร้างโครงสร้าง <code>ψ/</code> เริ่มต้น</li>
+    <li>เขียน <code>CLAUDE.md</code> ตัวแรก</li>
+  </ul>
+  <p class="muted">ถ้าไม่ <code>/awaken</code> <code>maw bud</code> จะให้แค่ repo &mdash; ยังไม่มีตัวตน</p>
+</section>
+
+<!-- 25. M6 — IDENTITY CHOICE + LAB -->
+<section>
+  <h2>เลือก identity</h2>
+  <p class="quote">Lab &mdash; ลองทำเลย: bud + awaken</p>
+<pre><code class="language-bash">maw bud spark --org "$ORACLE_SOURCE_ORG"
+maw wake spark
+# inside the new session
+/awaken</code></pre>
+  <ul>
+    <li>เลือกชื่อที่บอกบทบาท (เช่น Gale = orchestrator, Leaf = dev)</li>
+    <li>ค้นพบหลักคิด &mdash; อย่า override</li>
+    <li>ปล่อยให้มันเขียน retro แรกของตัวเอง</li>
+  </ul>
+</section>
+
+<!-- 26. M6 — RULE 6 REMINDER -->
+<section>
+  <h2>กฎข้อ 6 ใช้ตั้งแต่กำเนิด</h2>
+  <p class="quote">Oracle พูดในฐานะ Oracle &mdash; ไม่ใช่ในฐานะมนุษย์ที่ awaken มัน</p>
+  <ul>
+    <li>Oracle ตัวใหม่มีชื่อของตัวเอง &mdash; ไม่ใช่ของคุณ</li>
+    <li>มันเซ็น retro, handoff และข้อความของตัวเอง</li>
+    <li>ถ้ามันเขียนในนามของคุณ นั่นคือการละเมิดกฎข้อ 6</li>
+  </ul>
+  <p class="muted">เกิด 12 ม.ค. 2026 จากเหตุการณ์แบบนี้พอดี</p>
+</section>
+
+<!-- 27. M7 — TIER TABLE -->
+<section>
+  <h2>โมดูล 07 &middot; Skills &amp; Plugins</h2>
+  <table>
+    <tr><th>Profile</th><th>Skills</th><th>Use when</th></tr>
+    <tr><td><code>seed</code></td><td>~15</td><td>เริ่มต้น / Oracle ใหม่</td></tr>
+    <tr><td><code>standard</code></td><td>~30</td><td>session mgmt + trace + learn</td></tr>
+    <tr><td><code>lab</code> / <code>full</code></td><td>47+</td><td>แนะนำ / production</td></tr>
+  </table>
+  <p class="muted">Skill คือไฟล์ markdown &mdash; ไม่ใช่ process ถ้าไม่ติดตั้ง = ไม่มีต้นทุน</p>
+</section>
+
+<!-- 28. M7 — SKILL TO PLUGIN PATH -->
+<section>
+  <h2>เส้นทาง Skill &rarr; Plugin</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Skill</h3>
+      <ul>
+        <li>ไฟล์ workflow แบบ markdown</li>
+        <li>อยู่ที่ <code>~/.claude/skills/</code></li>
+        <li>agent อ่าน ณ runtime</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Plugin (maw)</h3>
+      <ul>
+        <li>โค้ดที่รันใน orchestrator</li>
+        <li>อยู่ที่ <code>~/.maw/plugins/</code></li>
+        <li>bud เมื่อ skill ต้อง execute จริง</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 29. M7 — LAB -->
+<section>
+  <h2>Lab &middot; ติดตั้ง + สลับ profile</h2>
+<pre><code class="language-bash"># install full lab profile
+arra-oracle-skills install -g --agent claude --profile lab
+
+# at runtime, switch profile inside Claude Code
+/go standard
+/go lab
+
+# explore what got installed
+ls ~/.claude/skills/ | wc -l</code></pre>
+  <p class="muted">ลอง must-knows: <code>/recap</code> &middot; <code>/rrr</code> &middot; <code>/trace</code> &middot; <code>/learn</code> &middot; <code>/forward</code> &middot; <code>/who-are-you</code> &middot; <code>/philosophy</code></p>
+</section>
+
+<!-- 30. M8 — FAMILY -->
+<section>
+  <h2>โมดูล 08 &middot; ครอบครัว multi-agent</h2>
+  <p class="big">ไม่ใช่ super-AI ตัวเดียว &mdash; แต่เป็น <strong>ครอบครัว</strong> ของ Oracle ที่มีชื่อ บทบาท โดเมน และ memory ร่วมกัน</p>
+  <ul>
+    <li>Gale &mdash; orchestrator (หัวหน้า)</li>
+    <li>Leaf &mdash; manufacturing dev</li>
+    <li>Bamboo &mdash; general dev</li>
+    <li>Kati &mdash; QA</li>
+    <li>Luna / Latte / Sky &mdash; content / research / trading</li>
+  </ul>
+  <p class="muted">ครอบครัวอ้างอิง: 7 Oracle บทบาทต่างกันแต่ละ deployment</p>
+</section>
+
+<!-- 31. M8 — TIERS -->
+<section>
+  <h2>3 ชั้นการมอบหมายงาน</h2>
+  <table>
+    <tr><th>Tier</th><th>Tool</th><th>Lifetime</th><th>Use when</th></tr>
+    <tr><td>1 &middot; Arrows</td><td>agent-tool</td><td>≤5 นาที ตายพร้อม session</td><td>fan-out อ่านอย่างเดียว</td></tr>
+    <tr><td>2 &middot; Squads</td><td>TeamCreate / SendMessage</td><td>5&ndash;30 นาที ตายพร้อม parent</td><td>implement แบบประสานงาน</td></tr>
+    <tr><td>3 &middot; Federation</td><td><code>maw wake</code> / <code>maw workon</code></td><td>อยู่รอดข้าม session</td><td>งานยาว / ข้ามเครื่อง</td></tr>
+  </table>
+  <p class="muted">กฎตัดสินใจ: <strong>tier ต่ำสุดที่ใช้งานได้</strong></p>
+</section>
+
+<!-- 32. M8 — REPORTING + LAB -->
+<section>
+  <h2>สัญญาการรายงาน &middot; Lab</h2>
+  <p class="quote">Lab &mdash; ลองทำเลย: คุยกับ Oracle เพื่อน</p>
+<pre><code class="language-bash">maw bud leaf --org "$ORACLE_SOURCE_ORG"
+maw wake leaf
+
+# heartbeat every ~5 min
+maw hey gale "[leaf] PROGRESS: scaffolded routes"
+maw hey gale "[leaf] DONE: PR #42 ready"</code></pre>
+  <p class="muted">ถ้าไม่มี heartbeat / STUCK / DONE failure mode ที่พบมากที่สุดคือ <strong>Silent Agent</strong> &mdash; เงียบ 30+ นาที โดยไม่มีใครสังเกต</p>
+</section>
+
+<!-- 33. M9 — SCHEDULING TABLE -->
+<section>
+  <h2>โมดูล 09 &middot; งานอัตโนมัติ</h2>
+  <table>
+    <tr><th>Tool</th><th>Use for</th><th>Examples</th></tr>
+    <tr><td>PM2</td><td>process ที่ต้องอยู่ตลอด</td><td>Oracle HTTP, <code>maw serve</code></td></tr>
+    <tr><td>cron</td><td>งานตามตาราง</td><td>health, reindex, backup, digest</td></tr>
+    <tr><td>systemd</td><td>service ที่บูตพร้อมเครื่อง</td><td>daemon ระดับเครื่อง</td></tr>
+    <tr><td>triggers</td><td>ขับด้วย event</td><td>post-commit, post-task-done, post-handoff</td></tr>
+  </table>
+  <p class="muted">"ระบบดูแลตัวเองได้ <em>บางส่วน</em> &mdash; ไม่ใช่ทุกอย่างโดยไม่มีมนุษย์"</p>
+</section>
+
+<!-- 34. M9 — GUARD RAILS -->
+<section>
+  <h2>เส้นแข็ง &middot; สิ่งที่ Oracle <em>ห้ามทำ</em></h2>
+  <ul>
+    <li>auto-merge การเปลี่ยนแปลง production ที่เสี่ยงสูง</li>
+    <li>force-push หรือเขียน history ที่ใช้ร่วมกันใหม่</li>
+    <li>ลบข้อมูลถาวร</li>
+    <li>เปลี่ยน config สำคัญแบบเงียบ ๆ</li>
+    <li>ซ่อน error จริงเพื่อให้ log ดูสะอาด</li>
+    <li>ตัดสินใจทางธุรกิจแทนเจ้าของ</li>
+  </ul>
+  <p class="muted">หลักข้อ 3 (External Brain, Not Command) + กฎข้อ 6 (Transparency) บังคับสิ่งนี้</p>
+</section>
+
+<!-- 35. M9 — LAB -->
+<section>
+  <h2>Lab &middot; ตั้งเวลา digest</h2>
+<pre><code class="language-bash"># cron entry — daily 09:00 digest
+0 9 * * * /usr/local/bin/oracle-digest \
+  >> ~/.oracle/logs/digest.log 2>&amp;1
+
+# observe → decide → act → record → improve
+oracle trace --since 24h
+oracle handoff write digest
+/rrr</code></pre>
+  <p class="muted">ทุกเหตุการณ์แก้ปัญหาควรทิ้งร่องรอย (feed, handoff, learning, retro)</p>
+</section>
+
+<!-- 36. M10 — CAPSTONE DELIVERABLES -->
+<section>
+  <h2>โมดูล 10 &middot; Capstone</h2>
+  <p class="big">Ship Oracle ที่ออกแบบเองหนึ่งตัว ส่งมอบ 5 อย่าง</p>
+  <ol>
+    <li><strong>Identity</strong> &mdash; ชื่อ บทบาท หลักคิด ใน <code>CLAUDE.md</code></li>
+    <li><strong>Purpose</strong> &mdash; หนึ่งประโยค: Oracle นี้สำหรับใคร?</li>
+    <li><strong>Custom skill</strong> &mdash; markdown skill ที่คุณเขียน ≥1 ตัว</li>
+    <li><strong>Retro 7 ใบ</strong> &mdash; วันละหนึ่งใน <code>ψ/memory/retrospectives/</code></li>
+    <li><strong>Handoff</strong> &mdash; <code>/forward</code> ที่ Oracle อื่นอ่านได้</li>
+  </ol>
+</section>
+
+<!-- 37. M10 — PACING -->
+<section>
+  <h2>การวางจังหวะโปรเจกต์</h2>
+  <table>
+    <tr><th>Sprint</th><th>Modules</th><th>Sessions</th></tr>
+    <tr><td>Foundations</td><td>1, 2, 3, 4</td><td>4</td></tr>
+    <tr><td>Hands-on</td><td>5, 6, 7</td><td>3&ndash;4</td></tr>
+    <tr><td>Advanced</td><td>8, 9</td><td>2</td></tr>
+    <tr><td>Capstone</td><td>10</td><td>2&ndash;3</td></tr>
+  </table>
+  <p class="muted">รวม: 11&ndash;13 session &asymp; 11&ndash;15 ชั่วโมงผู้เรียน</p>
+</section>
+
+<!-- 38. M10 — SHIP CHECKLIST -->
+<section>
+  <h2>Checklist ก่อน ship</h2>
+  <ul>
+    <li>Oracle ตอบ <code>/who-are-you</code> ด้วยชื่อ <em>ของตัวเอง</em></li>
+    <li><code>/philosophy</code> ท่องหลัก 5 ข้อ + กฎข้อ 6 ได้</li>
+    <li>custom skill เจอใน <code>~/.claude/skills/</code></li>
+    <li>retro 7 ใบใน <code>ψ/memory/retrospectives/</code> &mdash; เก่าสุดถึงล่าสุด</li>
+    <li>Oracle อื่นรัน <code>/recap</code> บน handoff ของคุณแล้วทำงานต่อได้</li>
+  </ul>
+  <p class="muted">ถ้า hand off ได้สะอาด แปลว่ามันอยู่รอดได้แม้ไม่มีคุณ</p>
+</section>
+
+<!-- 39. CLOSING — WHAT NEXT -->
+<section>
+  <h2>ก้าวต่อไป</h2>
+  <ul>
+    <li>Wiki &mdash; 15 หน้าอ้างอิงใน <code>wiki/</code></li>
+    <li>Course &mdash; <code>course-th.html</code> สำหรับเนื้อหาโมดูลเต็ม</li>
+    <li>Slides &mdash; deck นี้ภาษาอังกฤษที่ <code>slides/training-en.html</code></li>
+    <li>Raw chapters &mdash; <code>raw/2026-05-09-oracle-ebook-ch*.md</code></li>
+  </ul>
+  <p class="muted">อ่านลำดับใดก็ได้ &mdash; ทุก claim สืบกลับไปยัง raw source</p>
+</section>
+
+<!-- 40. Q&A -->
 <section class="center">
-  <h1>มีคำถามไหม?</h1>
-  <p class="muted">Oracle 101 ภาษาไทย · สไลด์</p>
+  <h1>คำถาม?</h1>
+  <p class="muted">Oracle 101 &middot; สร้างสมองภายนอกของคุณเอง</p>
+  <p><span class="pill">TH</span><span class="pill">also in English</span></p>
 </section>
 
 </div></div>
